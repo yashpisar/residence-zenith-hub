@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as ComplaintsIndexRouteImport } from './routes/complaints.index'
+import { Route as ComplaintsNewRouteImport } from './routes/complaints.new'
+import { Route as VisitorsHistoryRouteImport } from './routes/visitors.history'
+import { Route as VisitorsNewRouteImport } from './routes/visitors.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplaintsIndexRoute = ComplaintsIndexRouteImport.update({
+  id: '/complaints/',
+  path: '/complaints/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplaintsNewRoute = ComplaintsNewRouteImport.update({
+  id: '/complaints/new',
+  path: '/complaints/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitorsHistoryRoute = VisitorsHistoryRouteImport.update({
+  id: '/visitors/history',
+  path: '/visitors/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitorsNewRoute = VisitorsNewRouteImport.update({
+  id: '/visitors/new',
+  path: '/visitors/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/complaints/new': typeof ComplaintsNewRoute
+  '/visitors/history': typeof VisitorsHistoryRoute
+  '/visitors/new': typeof VisitorsNewRoute
+  '/complaints/': typeof ComplaintsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/complaints/new': typeof ComplaintsNewRoute
+  '/visitors/history': typeof VisitorsHistoryRoute
+  '/visitors/new': typeof VisitorsNewRoute
+  '/complaints': typeof ComplaintsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/complaints/new': typeof ComplaintsNewRoute
+  '/visitors/history': typeof VisitorsHistoryRoute
+  '/visitors/new': typeof VisitorsNewRoute
+  '/complaints/': typeof ComplaintsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/complaints/new'
+    | '/visitors/history'
+    | '/visitors/new'
+    | '/complaints/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/analytics'
+    | '/complaints/new'
+    | '/visitors/history'
+    | '/visitors/new'
+    | '/complaints'
+  id:
+    | '__root__'
+    | '/'
+    | '/analytics'
+    | '/complaints/new'
+    | '/visitors/history'
+    | '/visitors/new'
+    | '/complaints/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  ComplaintsNewRoute: typeof ComplaintsNewRoute
+  VisitorsHistoryRoute: typeof VisitorsHistoryRoute
+  VisitorsNewRoute: typeof VisitorsNewRoute
+  ComplaintsIndexRoute: typeof ComplaintsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +117,52 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/complaints/': {
+      id: '/complaints/'
+      path: '/complaints'
+      fullPath: '/complaints/'
+      preLoaderRoute: typeof ComplaintsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/complaints/new': {
+      id: '/complaints/new'
+      path: '/complaints/new'
+      fullPath: '/complaints/new'
+      preLoaderRoute: typeof ComplaintsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visitors/history': {
+      id: '/visitors/history'
+      path: '/visitors/history'
+      fullPath: '/visitors/history'
+      preLoaderRoute: typeof VisitorsHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visitors/new': {
+      id: '/visitors/new'
+      path: '/visitors/new'
+      fullPath: '/visitors/new'
+      preLoaderRoute: typeof VisitorsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  ComplaintsNewRoute: ComplaintsNewRoute,
+  VisitorsHistoryRoute: VisitorsHistoryRoute,
+  VisitorsNewRoute: VisitorsNewRoute,
+  ComplaintsIndexRoute: ComplaintsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
