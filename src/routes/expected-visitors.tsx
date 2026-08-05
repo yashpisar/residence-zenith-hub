@@ -20,7 +20,7 @@ function Page() {
       icon={CalendarClock}
       title="Expected Visitors"
       description="Pre-approved guests arriving today with time windows."
-      bullets={["Today"s list", "Time windows", "Auto check-in"]}
+      bullets={["Today's list", "Time windows", "Auto check-in"]}
     />
   );
 }
