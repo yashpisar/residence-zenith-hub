@@ -3,25 +3,31 @@ import { motion } from "motion/react";
 import { Building2, ChevronsLeft, LogOut } from "lucide-react";
 import { NAV } from "@/lib/navigation";
 import { ROLE_LABEL, useApp } from "@/lib/app-context";
+import { useSociety } from "@/contexts/SocietyContext";
 import { cn } from "@/lib/utils";
 
 export function SidebarContentInner({ onNavigate }: { onNavigate?: () => void }) {
   const { role, sidebarCollapsed, toggleSidebar } = useApp();
+  const { selectedSociety } = useSociety();
   const collapsed = sidebarCollapsed && !onNavigate;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <div className="flex h-full flex-col bg-sidebar">
       <div className="flex h-16 shrink-0 items-center gap-3 border-b border-sidebar-border px-4">
-        <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-[image:var(--gradient-primary)] shadow-[var(--shadow-glow)]">
-          <Building2 className="size-5 text-primary-foreground" />
-        </div>
+        {selectedSociety?.logo ? (
+          <img src={selectedSociety.logo} alt="logo" className="size-10 shrink-0 rounded-xl object-cover border border-sidebar-border" />
+        ) : (
+          <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-[image:var(--gradient-primary)] shadow-[var(--shadow-glow)]">
+            <Building2 className="size-5 text-primary-foreground" />
+          </div>
+        )}
         {!collapsed && (
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-bold tracking-tight text-foreground">
-              Havenly Estates
+              {selectedSociety?.name || "Society OS"}
             </p>
-            <p className="truncate text-xs text-muted-foreground">Society OS</p>
+            <p className="truncate text-xs text-muted-foreground">{selectedSociety?.city || "Global Control"}</p>
           </div>
         )}
         {!collapsed && (

@@ -17,21 +17,33 @@ import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as ExpectedVisitorsRouteImport } from './routes/expected-visitors'
 import { Route as FlatsRouteImport } from './routes/flats'
+import { Route as GuardRouteImport } from './routes/guard'
 import { Route as MaintenanceRouteImport } from './routes/maintenance'
 import { Route as NoticesRouteImport } from './routes/notices'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PublicComplaintsRouteImport } from './routes/public-complaints'
 import { Route as QrScannerRouteImport } from './routes/qr-scanner'
+import { Route as ResidentRouteImport } from './routes/resident'
 import { Route as ResidentsRouteImport } from './routes/residents'
+import { Route as SecretaryRouteImport } from './routes/secretary'
+import { Route as SelectSocietyRouteImport } from './routes/select-society'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as StaffRouteImport } from './routes/staff'
+import { Route as SuperadminRouteImport } from './routes/superadmin'
 import { Route as VisitorApprovalRouteImport } from './routes/visitor-approval'
 import { Route as VisitorReportsRouteImport } from './routes/visitor-reports'
+import { Route as authLoginRouteImport } from './routes/(auth)/login'
 import { Route as ComplaintsIndexRouteImport } from './routes/complaints.index'
 import { Route as ComplaintsNewRouteImport } from './routes/complaints.new'
+import { Route as GuardDashboardRouteImport } from './routes/guard/dashboard'
+import { Route as ResidentDashboardRouteImport } from './routes/resident/dashboard'
+import { Route as SecretaryDashboardRouteImport } from './routes/secretary/dashboard'
+import { Route as SocietiesSocietyIdRouteImport } from './routes/societies.$societyId'
+import { Route as SuperadminDashboardRouteImport } from './routes/superadmin/dashboard'
 import { Route as VisitorsHistoryRouteImport } from './routes/visitors.history'
 import { Route as VisitorsNewRouteImport } from './routes/visitors.new'
+import { Route as GuardVisitorsNewRouteImport } from './routes/guard/visitors/new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -73,6 +85,11 @@ const FlatsRoute = FlatsRouteImport.update({
   path: '/flats',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuardRoute = GuardRouteImport.update({
+  id: '/guard',
+  path: '/guard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MaintenanceRoute = MaintenanceRouteImport.update({
   id: '/maintenance',
   path: '/maintenance',
@@ -103,9 +120,24 @@ const QrScannerRoute = QrScannerRouteImport.update({
   path: '/qr-scanner',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResidentRoute = ResidentRouteImport.update({
+  id: '/resident',
+  path: '/resident',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResidentsRoute = ResidentsRouteImport.update({
   id: '/residents',
   path: '/residents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecretaryRoute = SecretaryRouteImport.update({
+  id: '/secretary',
+  path: '/secretary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectSocietyRoute = SelectSocietyRouteImport.update({
+  id: '/select-society',
+  path: '/select-society',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -118,6 +150,11 @@ const StaffRoute = StaffRouteImport.update({
   path: '/staff',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuperadminRoute = SuperadminRouteImport.update({
+  id: '/superadmin',
+  path: '/superadmin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VisitorApprovalRoute = VisitorApprovalRouteImport.update({
   id: '/visitor-approval',
   path: '/visitor-approval',
@@ -126,6 +163,11 @@ const VisitorApprovalRoute = VisitorApprovalRouteImport.update({
 const VisitorReportsRoute = VisitorReportsRouteImport.update({
   id: '/visitor-reports',
   path: '/visitor-reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authLoginRoute = authLoginRouteImport.update({
+  id: '/(auth)/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComplaintsIndexRoute = ComplaintsIndexRouteImport.update({
@@ -138,6 +180,31 @@ const ComplaintsNewRoute = ComplaintsNewRouteImport.update({
   path: '/complaints/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuardDashboardRoute = GuardDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => GuardRoute,
+} as any)
+const ResidentDashboardRoute = ResidentDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => ResidentRoute,
+} as any)
+const SecretaryDashboardRoute = SecretaryDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => SecretaryRoute,
+} as any)
+const SocietiesSocietyIdRoute = SocietiesSocietyIdRouteImport.update({
+  id: '/societies/$societyId',
+  path: '/societies/$societyId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminDashboardRoute = SuperadminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => SuperadminRoute,
+} as any)
 const VisitorsHistoryRoute = VisitorsHistoryRouteImport.update({
   id: '/visitors/history',
   path: '/visitors/history',
@@ -147,6 +214,11 @@ const VisitorsNewRoute = VisitorsNewRouteImport.update({
   id: '/visitors/new',
   path: '/visitors/new',
   getParentRoute: () => rootRouteImport,
+} as any)
+const GuardVisitorsNewRoute = GuardVisitorsNewRouteImport.update({
+  id: '/visitors/new',
+  path: '/visitors/new',
+  getParentRoute: () => GuardRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -158,21 +230,33 @@ export interface FileRoutesByFullPath {
   '/emergency': typeof EmergencyRoute
   '/expected-visitors': typeof ExpectedVisitorsRoute
   '/flats': typeof FlatsRoute
+  '/guard': typeof GuardRouteWithChildren
   '/maintenance': typeof MaintenanceRoute
   '/notices': typeof NoticesRoute
   '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
   '/public-complaints': typeof PublicComplaintsRoute
   '/qr-scanner': typeof QrScannerRoute
+  '/resident': typeof ResidentRouteWithChildren
   '/residents': typeof ResidentsRoute
+  '/secretary': typeof SecretaryRouteWithChildren
+  '/select-society': typeof SelectSocietyRoute
   '/settings': typeof SettingsRoute
   '/staff': typeof StaffRoute
+  '/superadmin': typeof SuperadminRouteWithChildren
   '/visitor-approval': typeof VisitorApprovalRoute
   '/visitor-reports': typeof VisitorReportsRoute
+  '/login': typeof authLoginRoute
   '/complaints/new': typeof ComplaintsNewRoute
+  '/guard/dashboard': typeof GuardDashboardRoute
+  '/resident/dashboard': typeof ResidentDashboardRoute
+  '/secretary/dashboard': typeof SecretaryDashboardRoute
+  '/societies/$societyId': typeof SocietiesSocietyIdRoute
+  '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/visitors/history': typeof VisitorsHistoryRoute
   '/visitors/new': typeof VisitorsNewRoute
   '/complaints/': typeof ComplaintsIndexRoute
+  '/guard/visitors/new': typeof GuardVisitorsNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -183,21 +267,33 @@ export interface FileRoutesByTo {
   '/emergency': typeof EmergencyRoute
   '/expected-visitors': typeof ExpectedVisitorsRoute
   '/flats': typeof FlatsRoute
+  '/guard': typeof GuardRouteWithChildren
   '/maintenance': typeof MaintenanceRoute
   '/notices': typeof NoticesRoute
   '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
   '/public-complaints': typeof PublicComplaintsRoute
   '/qr-scanner': typeof QrScannerRoute
+  '/resident': typeof ResidentRouteWithChildren
   '/residents': typeof ResidentsRoute
+  '/secretary': typeof SecretaryRouteWithChildren
+  '/select-society': typeof SelectSocietyRoute
   '/settings': typeof SettingsRoute
   '/staff': typeof StaffRoute
+  '/superadmin': typeof SuperadminRouteWithChildren
   '/visitor-approval': typeof VisitorApprovalRoute
   '/visitor-reports': typeof VisitorReportsRoute
+  '/login': typeof authLoginRoute
   '/complaints/new': typeof ComplaintsNewRoute
+  '/guard/dashboard': typeof GuardDashboardRoute
+  '/resident/dashboard': typeof ResidentDashboardRoute
+  '/secretary/dashboard': typeof SecretaryDashboardRoute
+  '/societies/$societyId': typeof SocietiesSocietyIdRoute
+  '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/visitors/history': typeof VisitorsHistoryRoute
   '/visitors/new': typeof VisitorsNewRoute
   '/complaints': typeof ComplaintsIndexRoute
+  '/guard/visitors/new': typeof GuardVisitorsNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -209,21 +305,33 @@ export interface FileRoutesById {
   '/emergency': typeof EmergencyRoute
   '/expected-visitors': typeof ExpectedVisitorsRoute
   '/flats': typeof FlatsRoute
+  '/guard': typeof GuardRouteWithChildren
   '/maintenance': typeof MaintenanceRoute
   '/notices': typeof NoticesRoute
   '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
   '/public-complaints': typeof PublicComplaintsRoute
   '/qr-scanner': typeof QrScannerRoute
+  '/resident': typeof ResidentRouteWithChildren
   '/residents': typeof ResidentsRoute
+  '/secretary': typeof SecretaryRouteWithChildren
+  '/select-society': typeof SelectSocietyRoute
   '/settings': typeof SettingsRoute
   '/staff': typeof StaffRoute
+  '/superadmin': typeof SuperadminRouteWithChildren
   '/visitor-approval': typeof VisitorApprovalRoute
   '/visitor-reports': typeof VisitorReportsRoute
+  '/(auth)/login': typeof authLoginRoute
   '/complaints/new': typeof ComplaintsNewRoute
+  '/guard/dashboard': typeof GuardDashboardRoute
+  '/resident/dashboard': typeof ResidentDashboardRoute
+  '/secretary/dashboard': typeof SecretaryDashboardRoute
+  '/societies/$societyId': typeof SocietiesSocietyIdRoute
+  '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/visitors/history': typeof VisitorsHistoryRoute
   '/visitors/new': typeof VisitorsNewRoute
   '/complaints/': typeof ComplaintsIndexRoute
+  '/guard/visitors/new': typeof GuardVisitorsNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -236,21 +344,33 @@ export interface FileRouteTypes {
     | '/emergency'
     | '/expected-visitors'
     | '/flats'
+    | '/guard'
     | '/maintenance'
     | '/notices'
     | '/payments'
     | '/profile'
     | '/public-complaints'
     | '/qr-scanner'
+    | '/resident'
     | '/residents'
+    | '/secretary'
+    | '/select-society'
     | '/settings'
     | '/staff'
+    | '/superadmin'
     | '/visitor-approval'
     | '/visitor-reports'
+    | '/login'
     | '/complaints/new'
+    | '/guard/dashboard'
+    | '/resident/dashboard'
+    | '/secretary/dashboard'
+    | '/societies/$societyId'
+    | '/superadmin/dashboard'
     | '/visitors/history'
     | '/visitors/new'
     | '/complaints/'
+    | '/guard/visitors/new'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -261,21 +381,33 @@ export interface FileRouteTypes {
     | '/emergency'
     | '/expected-visitors'
     | '/flats'
+    | '/guard'
     | '/maintenance'
     | '/notices'
     | '/payments'
     | '/profile'
     | '/public-complaints'
     | '/qr-scanner'
+    | '/resident'
     | '/residents'
+    | '/secretary'
+    | '/select-society'
     | '/settings'
     | '/staff'
+    | '/superadmin'
     | '/visitor-approval'
     | '/visitor-reports'
+    | '/login'
     | '/complaints/new'
+    | '/guard/dashboard'
+    | '/resident/dashboard'
+    | '/secretary/dashboard'
+    | '/societies/$societyId'
+    | '/superadmin/dashboard'
     | '/visitors/history'
     | '/visitors/new'
     | '/complaints'
+    | '/guard/visitors/new'
   id:
     | '__root__'
     | '/'
@@ -286,21 +418,33 @@ export interface FileRouteTypes {
     | '/emergency'
     | '/expected-visitors'
     | '/flats'
+    | '/guard'
     | '/maintenance'
     | '/notices'
     | '/payments'
     | '/profile'
     | '/public-complaints'
     | '/qr-scanner'
+    | '/resident'
     | '/residents'
+    | '/secretary'
+    | '/select-society'
     | '/settings'
     | '/staff'
+    | '/superadmin'
     | '/visitor-approval'
     | '/visitor-reports'
+    | '/(auth)/login'
     | '/complaints/new'
+    | '/guard/dashboard'
+    | '/resident/dashboard'
+    | '/secretary/dashboard'
+    | '/societies/$societyId'
+    | '/superadmin/dashboard'
     | '/visitors/history'
     | '/visitors/new'
     | '/complaints/'
+    | '/guard/visitors/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -312,18 +456,25 @@ export interface RootRouteChildren {
   EmergencyRoute: typeof EmergencyRoute
   ExpectedVisitorsRoute: typeof ExpectedVisitorsRoute
   FlatsRoute: typeof FlatsRoute
+  GuardRoute: typeof GuardRouteWithChildren
   MaintenanceRoute: typeof MaintenanceRoute
   NoticesRoute: typeof NoticesRoute
   PaymentsRoute: typeof PaymentsRoute
   ProfileRoute: typeof ProfileRoute
   PublicComplaintsRoute: typeof PublicComplaintsRoute
   QrScannerRoute: typeof QrScannerRoute
+  ResidentRoute: typeof ResidentRouteWithChildren
   ResidentsRoute: typeof ResidentsRoute
+  SecretaryRoute: typeof SecretaryRouteWithChildren
+  SelectSocietyRoute: typeof SelectSocietyRoute
   SettingsRoute: typeof SettingsRoute
   StaffRoute: typeof StaffRoute
+  SuperadminRoute: typeof SuperadminRouteWithChildren
   VisitorApprovalRoute: typeof VisitorApprovalRoute
   VisitorReportsRoute: typeof VisitorReportsRoute
+  authLoginRoute: typeof authLoginRoute
   ComplaintsNewRoute: typeof ComplaintsNewRoute
+  SocietiesSocietyIdRoute: typeof SocietiesSocietyIdRoute
   VisitorsHistoryRoute: typeof VisitorsHistoryRoute
   VisitorsNewRoute: typeof VisitorsNewRoute
   ComplaintsIndexRoute: typeof ComplaintsIndexRoute
@@ -387,6 +538,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FlatsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guard': {
+      id: '/guard'
+      path: '/guard'
+      fullPath: '/guard'
+      preLoaderRoute: typeof GuardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/maintenance': {
       id: '/maintenance'
       path: '/maintenance'
@@ -429,11 +587,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QrScannerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resident': {
+      id: '/resident'
+      path: '/resident'
+      fullPath: '/resident'
+      preLoaderRoute: typeof ResidentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/residents': {
       id: '/residents'
       path: '/residents'
       fullPath: '/residents'
       preLoaderRoute: typeof ResidentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/secretary': {
+      id: '/secretary'
+      path: '/secretary'
+      fullPath: '/secretary'
+      preLoaderRoute: typeof SecretaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/select-society': {
+      id: '/select-society'
+      path: '/select-society'
+      fullPath: '/select-society'
+      preLoaderRoute: typeof SelectSocietyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -450,6 +629,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StaffRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/superadmin': {
+      id: '/superadmin'
+      path: '/superadmin'
+      fullPath: '/superadmin'
+      preLoaderRoute: typeof SuperadminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/visitor-approval': {
       id: '/visitor-approval'
       path: '/visitor-approval'
@@ -462,6 +648,13 @@ declare module '@tanstack/react-router' {
       path: '/visitor-reports'
       fullPath: '/visitor-reports'
       preLoaderRoute: typeof VisitorReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)/login': {
+      id: '/(auth)/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof authLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/complaints/': {
@@ -478,6 +671,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComplaintsNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guard/dashboard': {
+      id: '/guard/dashboard'
+      path: '/dashboard'
+      fullPath: '/guard/dashboard'
+      preLoaderRoute: typeof GuardDashboardRouteImport
+      parentRoute: typeof GuardRoute
+    }
+    '/resident/dashboard': {
+      id: '/resident/dashboard'
+      path: '/dashboard'
+      fullPath: '/resident/dashboard'
+      preLoaderRoute: typeof ResidentDashboardRouteImport
+      parentRoute: typeof ResidentRoute
+    }
+    '/secretary/dashboard': {
+      id: '/secretary/dashboard'
+      path: '/dashboard'
+      fullPath: '/secretary/dashboard'
+      preLoaderRoute: typeof SecretaryDashboardRouteImport
+      parentRoute: typeof SecretaryRoute
+    }
+    '/societies/$societyId': {
+      id: '/societies/$societyId'
+      path: '/societies/$societyId'
+      fullPath: '/societies/$societyId'
+      preLoaderRoute: typeof SocietiesSocietyIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/dashboard': {
+      id: '/superadmin/dashboard'
+      path: '/dashboard'
+      fullPath: '/superadmin/dashboard'
+      preLoaderRoute: typeof SuperadminDashboardRouteImport
+      parentRoute: typeof SuperadminRoute
+    }
     '/visitors/history': {
       id: '/visitors/history'
       path: '/visitors/history'
@@ -492,8 +720,63 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisitorsNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guard/visitors/new': {
+      id: '/guard/visitors/new'
+      path: '/visitors/new'
+      fullPath: '/guard/visitors/new'
+      preLoaderRoute: typeof GuardVisitorsNewRouteImport
+      parentRoute: typeof GuardRoute
+    }
   }
 }
+
+interface GuardRouteChildren {
+  GuardDashboardRoute: typeof GuardDashboardRoute
+  GuardVisitorsNewRoute: typeof GuardVisitorsNewRoute
+}
+
+const GuardRouteChildren: GuardRouteChildren = {
+  GuardDashboardRoute: GuardDashboardRoute,
+  GuardVisitorsNewRoute: GuardVisitorsNewRoute,
+}
+
+const GuardRouteWithChildren = GuardRoute._addFileChildren(GuardRouteChildren)
+
+interface ResidentRouteChildren {
+  ResidentDashboardRoute: typeof ResidentDashboardRoute
+}
+
+const ResidentRouteChildren: ResidentRouteChildren = {
+  ResidentDashboardRoute: ResidentDashboardRoute,
+}
+
+const ResidentRouteWithChildren = ResidentRoute._addFileChildren(
+  ResidentRouteChildren,
+)
+
+interface SecretaryRouteChildren {
+  SecretaryDashboardRoute: typeof SecretaryDashboardRoute
+}
+
+const SecretaryRouteChildren: SecretaryRouteChildren = {
+  SecretaryDashboardRoute: SecretaryDashboardRoute,
+}
+
+const SecretaryRouteWithChildren = SecretaryRoute._addFileChildren(
+  SecretaryRouteChildren,
+)
+
+interface SuperadminRouteChildren {
+  SuperadminDashboardRoute: typeof SuperadminDashboardRoute
+}
+
+const SuperadminRouteChildren: SuperadminRouteChildren = {
+  SuperadminDashboardRoute: SuperadminDashboardRoute,
+}
+
+const SuperadminRouteWithChildren = SuperadminRoute._addFileChildren(
+  SuperadminRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -504,18 +787,25 @@ const rootRouteChildren: RootRouteChildren = {
   EmergencyRoute: EmergencyRoute,
   ExpectedVisitorsRoute: ExpectedVisitorsRoute,
   FlatsRoute: FlatsRoute,
+  GuardRoute: GuardRouteWithChildren,
   MaintenanceRoute: MaintenanceRoute,
   NoticesRoute: NoticesRoute,
   PaymentsRoute: PaymentsRoute,
   ProfileRoute: ProfileRoute,
   PublicComplaintsRoute: PublicComplaintsRoute,
   QrScannerRoute: QrScannerRoute,
+  ResidentRoute: ResidentRouteWithChildren,
   ResidentsRoute: ResidentsRoute,
+  SecretaryRoute: SecretaryRouteWithChildren,
+  SelectSocietyRoute: SelectSocietyRoute,
   SettingsRoute: SettingsRoute,
   StaffRoute: StaffRoute,
+  SuperadminRoute: SuperadminRouteWithChildren,
   VisitorApprovalRoute: VisitorApprovalRoute,
   VisitorReportsRoute: VisitorReportsRoute,
+  authLoginRoute: authLoginRoute,
   ComplaintsNewRoute: ComplaintsNewRoute,
+  SocietiesSocietyIdRoute: SocietiesSocietyIdRoute,
   VisitorsHistoryRoute: VisitorsHistoryRoute,
   VisitorsNewRoute: VisitorsNewRoute,
   ComplaintsIndexRoute: ComplaintsIndexRoute,
@@ -523,3 +813,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

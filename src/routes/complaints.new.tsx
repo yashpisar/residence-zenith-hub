@@ -6,6 +6,7 @@ import { SurfaceCard } from "@/components/app/SurfaceCard";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { socketService } from "@/services/socket.service";
 
 export const Route = createFileRoute("/complaints/new")({
   head: () => ({
@@ -84,8 +85,16 @@ function NewComplaint() {
       return;
     }
     setError(undefined);
+    socketService.emit("new_complaint", {
+      id: "CMP-" + Math.floor(1000 + Math.random() * 9000),
+      title: title,
+      category: category,
+      priority: priority,
+      status: "Open"
+    });
+
     toast.success("Complaint registered", {
-      description: "Ticket CMP-2042 created and routed to the facility team.",
+      description: "Ticket created and routed to the facility team.",
     });
     navigate({ to: "/complaints" });
   };

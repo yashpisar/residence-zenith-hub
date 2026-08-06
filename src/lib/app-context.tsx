@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
-export type Role = "resident" | "secretary" | "security";
+export type Role = "resident" | "secretary" | "security" | "superadmin";
 export type ThemeMode = "dark" | "light" | "system";
 
 const ROLE_KEY = "havenly.role";
@@ -10,6 +10,7 @@ export const ROLE_LABEL: Record<Role, string> = {
   resident: "Resident",
   secretary: "Secretary",
   security: "Security Guard",
+  superadmin: "Super Admin",
 };
 
 type AppState = {

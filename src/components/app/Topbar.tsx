@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   Bell,
+  Building2,
   Command,
   Laptop,
   Menu,
@@ -25,8 +26,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SidebarContentInner } from "./Sidebar";
 import { ROLE_LABEL, useApp, type Role, type ThemeMode } from "@/lib/app-context";
-import { activityFeed } from "@/lib/mock-data";
 import { toast } from "sonner";
+import { NotificationBell } from "@/components/notifications/NotificationBell";
+import { GlobalSearch } from "@/components/common/GlobalSearch";
 
 const themeIcon: Record<ThemeMode, typeof Sun> = { dark: Moon, light: Sun, system: Laptop };
 
@@ -61,17 +63,7 @@ export function Topbar() {
         </Button>
       )}
 
-      <label className="relative hidden min-w-0 flex-1 items-center md:flex md:max-w-md">
-        <Search className="pointer-events-none absolute left-3 size-4 text-muted-foreground" />
-        <input
-          type="search"
-          placeholder="Search complaints, residents, flats…"
-          className="h-10 w-full rounded-xl border border-border bg-background/60 pl-9 pr-16 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary/60 focus:ring-2 focus:ring-primary/25"
-        />
-        <kbd className="pointer-events-none absolute right-3 flex items-center gap-0.5 rounded-md border border-border px-1.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
-          <Command className="size-3" />K
-        </kbd>
-      </label>
+      <GlobalSearch />
 
       <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
         <Button
@@ -101,28 +93,30 @@ export function Topbar() {
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-destructive">Sign out</DropdownMenuItem>
+            <DropdownMenuItem 
+              onClick={() => {
+                localStorage.removeItem("havenly.token");
+                localStorage.removeItem("havenly.user");
+                localStorage.removeItem("havenly.societyId");
+                window.location.href = "/select-society";
+              }}
+            >
+              <Building2 className="mr-2 size-4" /> Switch Society
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              className="text-destructive"
+              onClick={() => {
+                localStorage.removeItem("havenly.token");
+                localStorage.removeItem("havenly.user");
+                window.location.href = "/login";
+              }}
+            >
+              Sign out
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" aria-label="Notifications" className="relative">
-              <Bell />
-              <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-destructive ring-2 ring-surface" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-80">
-            <DropdownMenuLabel>Live notifications</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            {activityFeed.slice(0, 4).map((a) => (
-              <DropdownMenuItem key={a.id} className="flex-col items-start gap-0.5 py-2.5">
-                <span className="text-sm font-semibold text-foreground">{a.title}</span>
-                <span className="text-xs text-muted-foreground">{a.detail}</span>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <NotificationBell />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

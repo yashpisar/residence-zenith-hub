@@ -42,7 +42,7 @@ export const NAV: Record<Role, NavGroup[]> = {
   resident: [
     {
       label: "Overview",
-      items: [{ label: "Dashboard", to: "/", icon: LayoutDashboard }],
+      items: [{ label: "Dashboard", to: "/resident/dashboard", icon: LayoutDashboard }],
     },
     {
       label: "Complaints",
@@ -74,7 +74,7 @@ export const NAV: Record<Role, NavGroup[]> = {
     {
       label: "Overview",
       items: [
-        { label: "Dashboard", to: "/", icon: LayoutDashboard },
+        { label: "Dashboard", to: "/secretary/dashboard", icon: LayoutDashboard },
         { label: "Analytics", to: "/analytics", icon: BarChart3 },
       ],
     },
@@ -105,7 +105,7 @@ export const NAV: Record<Role, NavGroup[]> = {
   security: [
     {
       label: "Overview",
-      items: [{ label: "Dashboard", to: "/", icon: Gauge }],
+      items: [{ label: "Dashboard", to: "/guard/dashboard", icon: Gauge }],
     },
     {
       label: "Gate",
@@ -126,4 +126,16 @@ export const NAV: Record<Role, NavGroup[]> = {
       ],
     },
   ],
+  superadmin: [
+    {
+      label: "Overview",
+      items: [{ label: "Dashboard", to: "/superadmin/dashboard", icon: LayoutDashboard }],
+    },
+    {
+      label: "System",
+      items: [
+        { label: "Global Settings", to: "/settings", icon: Settings },
+      ],
+    }
+  ]
 };

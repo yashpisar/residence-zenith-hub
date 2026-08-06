@@ -5,6 +5,11 @@ import { DataTable, type Column } from "@/components/app/DataTable";
 import { StatusBadge } from "@/components/app/StatusBadge";
 import { Button } from "@/components/ui/button";
 import { complaints, type Complaint } from "@/lib/mock-data";
+import { useAuth } from "@/contexts/AuthContext";
+import { socketService } from "@/services/socket.service";
+import { toast } from "sonner";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { MoreHorizontal, CheckCircle, RefreshCcw } from "lucide-react";
 
 export const Route = createFileRoute("/complaints/")({
   head: () => ({
@@ -37,6 +42,44 @@ const columns: Column<Complaint>[] = [
 ];
 
 function ComplaintsPage() {
+  const { user } = useAuth();
+  
+  const handleStatusChange = (id: string, newStatus: string) => {
+    socketService.emit("complaint_status_changed", {
+      id: id,
+      status: newStatus,
+      updatedBy: user?.name
+    });
+    toast.success(`Complaint ${id} marked as ${newStatus}`);
+  };
+
+  const dynamicColumns = [...columns];
+  
+  if (user?.role === "secretary") {
+    dynamicColumns.push({
+      key: "id", // Using id just as a dummy key for actions
+      header: "",
+      render: (r) => (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="h-8 w-8">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => handleStatusChange(r.id, "In Progress")}>
+              <RefreshCcw className="mr-2 h-4 w-4" /> Set In Progress
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleStatusChange(r.id, "Resolved")}>
+              <CheckCircle className="mr-2 h-4 w-4" /> Mark Resolved
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ),
+    });
+  }
+
   return (
     <>
       <PageHeader
@@ -52,7 +95,7 @@ function ComplaintsPage() {
         }
       />
       <DataTable
-        columns={columns}
+        columns={dynamicColumns}
         rows={complaints}
         searchKeys={["id", "title", "category", "flat", "raisedBy", "status"]}
         pageSize={8}
