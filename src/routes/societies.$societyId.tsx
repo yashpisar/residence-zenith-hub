@@ -90,7 +90,15 @@ function SocietyDetailsPage() {
             </div>
           </div>
 
-          <div className="pb-2 w-full md:w-auto">
+          <div className="pb-2 w-full md:w-auto flex flex-col md:flex-row gap-3">
+            <Button 
+              variant="outline"
+              size="lg" 
+              className="w-full md:w-auto text-lg h-14 px-8" 
+              onClick={() => navigate({ to: `/societies/${society.id}/edit` })}
+            >
+              <Wrench className="mr-2 size-5" /> Edit Society
+            </Button>
             <Button 
               size="lg" 
               className="w-full md:w-auto shadow-lg hover:shadow-xl text-lg h-14 px-8" 
@@ -142,7 +150,7 @@ function SocietyDetailsPage() {
                 <div className="bg-muted/50 p-4 rounded-xl border border-border">
                   <p className="text-2xl font-bold text-foreground">{society.wings.length}</p>
                   <p className="text-xs text-muted-foreground font-semibold uppercase">Total Wings</p>
-                  <p className="text-xs text-muted-foreground mt-1">{society.wings.join(", ")}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{society.wings.map(w => w.name).join(", ")}</p>
                 </div>
                 <div className="bg-muted/50 p-4 rounded-xl border border-border">
                   <p className="text-2xl font-bold text-foreground">{society.totalFlats}</p>

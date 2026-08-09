@@ -584,15 +584,6 @@ Pixel-perfect responsive layouts.
 
 The application should be production-ready, scalable, and easy to connect with a Node.js + Express.js backend using MongoDB and REST APIs.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/83aa38bc-65ab-4a9e-8661-134e6b507ee3).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 

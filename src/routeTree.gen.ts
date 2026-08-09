@@ -40,10 +40,12 @@ import { Route as GuardDashboardRouteImport } from './routes/guard/dashboard'
 import { Route as ResidentDashboardRouteImport } from './routes/resident/dashboard'
 import { Route as SecretaryDashboardRouteImport } from './routes/secretary/dashboard'
 import { Route as SocietiesSocietyIdRouteImport } from './routes/societies.$societyId'
+import { Route as SocietiesNewRouteImport } from './routes/societies.new'
 import { Route as SuperadminDashboardRouteImport } from './routes/superadmin/dashboard'
 import { Route as VisitorsHistoryRouteImport } from './routes/visitors.history'
 import { Route as VisitorsNewRouteImport } from './routes/visitors.new'
 import { Route as GuardVisitorsNewRouteImport } from './routes/guard/visitors/new'
+import { Route as SocietiesSocietyIdEditRouteImport } from './routes/societies.$societyId.edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -200,6 +202,11 @@ const SocietiesSocietyIdRoute = SocietiesSocietyIdRouteImport.update({
   path: '/societies/$societyId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SocietiesNewRoute = SocietiesNewRouteImport.update({
+  id: '/societies/new',
+  path: '/societies/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SuperadminDashboardRoute = SuperadminDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -219,6 +226,11 @@ const GuardVisitorsNewRoute = GuardVisitorsNewRouteImport.update({
   id: '/visitors/new',
   path: '/visitors/new',
   getParentRoute: () => GuardRoute,
+} as any)
+const SocietiesSocietyIdEditRoute = SocietiesSocietyIdEditRouteImport.update({
+  id: '/edit',
+  path: '/edit',
+  getParentRoute: () => SocietiesSocietyIdRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -251,12 +263,14 @@ export interface FileRoutesByFullPath {
   '/guard/dashboard': typeof GuardDashboardRoute
   '/resident/dashboard': typeof ResidentDashboardRoute
   '/secretary/dashboard': typeof SecretaryDashboardRoute
-  '/societies/$societyId': typeof SocietiesSocietyIdRoute
+  '/societies/$societyId': typeof SocietiesSocietyIdRouteWithChildren
+  '/societies/new': typeof SocietiesNewRoute
   '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/visitors/history': typeof VisitorsHistoryRoute
   '/visitors/new': typeof VisitorsNewRoute
   '/complaints/': typeof ComplaintsIndexRoute
   '/guard/visitors/new': typeof GuardVisitorsNewRoute
+  '/societies/$societyId/edit': typeof SocietiesSocietyIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -288,12 +302,14 @@ export interface FileRoutesByTo {
   '/guard/dashboard': typeof GuardDashboardRoute
   '/resident/dashboard': typeof ResidentDashboardRoute
   '/secretary/dashboard': typeof SecretaryDashboardRoute
-  '/societies/$societyId': typeof SocietiesSocietyIdRoute
+  '/societies/$societyId': typeof SocietiesSocietyIdRouteWithChildren
+  '/societies/new': typeof SocietiesNewRoute
   '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/visitors/history': typeof VisitorsHistoryRoute
   '/visitors/new': typeof VisitorsNewRoute
   '/complaints': typeof ComplaintsIndexRoute
   '/guard/visitors/new': typeof GuardVisitorsNewRoute
+  '/societies/$societyId/edit': typeof SocietiesSocietyIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -326,12 +342,14 @@ export interface FileRoutesById {
   '/guard/dashboard': typeof GuardDashboardRoute
   '/resident/dashboard': typeof ResidentDashboardRoute
   '/secretary/dashboard': typeof SecretaryDashboardRoute
-  '/societies/$societyId': typeof SocietiesSocietyIdRoute
+  '/societies/$societyId': typeof SocietiesSocietyIdRouteWithChildren
+  '/societies/new': typeof SocietiesNewRoute
   '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/visitors/history': typeof VisitorsHistoryRoute
   '/visitors/new': typeof VisitorsNewRoute
   '/complaints/': typeof ComplaintsIndexRoute
   '/guard/visitors/new': typeof GuardVisitorsNewRoute
+  '/societies/$societyId/edit': typeof SocietiesSocietyIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -366,11 +384,13 @@ export interface FileRouteTypes {
     | '/resident/dashboard'
     | '/secretary/dashboard'
     | '/societies/$societyId'
+    | '/societies/new'
     | '/superadmin/dashboard'
     | '/visitors/history'
     | '/visitors/new'
     | '/complaints/'
     | '/guard/visitors/new'
+    | '/societies/$societyId/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -403,11 +423,13 @@ export interface FileRouteTypes {
     | '/resident/dashboard'
     | '/secretary/dashboard'
     | '/societies/$societyId'
+    | '/societies/new'
     | '/superadmin/dashboard'
     | '/visitors/history'
     | '/visitors/new'
     | '/complaints'
     | '/guard/visitors/new'
+    | '/societies/$societyId/edit'
   id:
     | '__root__'
     | '/'
@@ -440,11 +462,13 @@ export interface FileRouteTypes {
     | '/resident/dashboard'
     | '/secretary/dashboard'
     | '/societies/$societyId'
+    | '/societies/new'
     | '/superadmin/dashboard'
     | '/visitors/history'
     | '/visitors/new'
     | '/complaints/'
     | '/guard/visitors/new'
+    | '/societies/$societyId/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -474,7 +498,8 @@ export interface RootRouteChildren {
   VisitorReportsRoute: typeof VisitorReportsRoute
   authLoginRoute: typeof authLoginRoute
   ComplaintsNewRoute: typeof ComplaintsNewRoute
-  SocietiesSocietyIdRoute: typeof SocietiesSocietyIdRoute
+  SocietiesSocietyIdRoute: typeof SocietiesSocietyIdRouteWithChildren
+  SocietiesNewRoute: typeof SocietiesNewRoute
   VisitorsHistoryRoute: typeof VisitorsHistoryRoute
   VisitorsNewRoute: typeof VisitorsNewRoute
   ComplaintsIndexRoute: typeof ComplaintsIndexRoute
@@ -699,6 +724,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SocietiesSocietyIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/societies/new': {
+      id: '/societies/new'
+      path: '/societies/new'
+      fullPath: '/societies/new'
+      preLoaderRoute: typeof SocietiesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/superadmin/dashboard': {
       id: '/superadmin/dashboard'
       path: '/dashboard'
@@ -726,6 +758,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/guard/visitors/new'
       preLoaderRoute: typeof GuardVisitorsNewRouteImport
       parentRoute: typeof GuardRoute
+    }
+    '/societies/$societyId/edit': {
+      id: '/societies/$societyId/edit'
+      path: '/edit'
+      fullPath: '/societies/$societyId/edit'
+      preLoaderRoute: typeof SocietiesSocietyIdEditRouteImport
+      parentRoute: typeof SocietiesSocietyIdRoute
     }
   }
 }
@@ -778,6 +817,17 @@ const SuperadminRouteWithChildren = SuperadminRoute._addFileChildren(
   SuperadminRouteChildren,
 )
 
+interface SocietiesSocietyIdRouteChildren {
+  SocietiesSocietyIdEditRoute: typeof SocietiesSocietyIdEditRoute
+}
+
+const SocietiesSocietyIdRouteChildren: SocietiesSocietyIdRouteChildren = {
+  SocietiesSocietyIdEditRoute: SocietiesSocietyIdEditRoute,
+}
+
+const SocietiesSocietyIdRouteWithChildren =
+  SocietiesSocietyIdRoute._addFileChildren(SocietiesSocietyIdRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalyticsRoute: AnalyticsRoute,
@@ -805,7 +855,8 @@ const rootRouteChildren: RootRouteChildren = {
   VisitorReportsRoute: VisitorReportsRoute,
   authLoginRoute: authLoginRoute,
   ComplaintsNewRoute: ComplaintsNewRoute,
-  SocietiesSocietyIdRoute: SocietiesSocietyIdRoute,
+  SocietiesSocietyIdRoute: SocietiesSocietyIdRouteWithChildren,
+  SocietiesNewRoute: SocietiesNewRoute,
   VisitorsHistoryRoute: VisitorsHistoryRoute,
   VisitorsNewRoute: VisitorsNewRoute,
   ComplaintsIndexRoute: ComplaintsIndexRoute,

@@ -25,7 +25,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SidebarContentInner } from "./Sidebar";
-import { ROLE_LABEL, useApp, type Role, type ThemeMode } from "@/lib/app-context";
+import { ROLE_LABEL, useApp, type ThemeMode } from "@/lib/app-context";
+import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
 import { GlobalSearch } from "@/components/common/GlobalSearch";
@@ -34,6 +35,7 @@ const themeIcon: Record<ThemeMode, typeof Sun> = { dark: Moon, light: Sun, syste
 
 export function Topbar() {
   const { role, setRole, theme, setTheme, sidebarCollapsed, toggleSidebar } = useApp();
+  const { user, logout } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
   const ThemeIcon = themeIcon[theme];
 
@@ -81,23 +83,17 @@ export function Topbar() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>Signed in as</DropdownMenuLabel>
-            <DropdownMenuRadioGroup value={role} onValueChange={(v) => setRole(v as Role)}>
-              {(Object.keys(ROLE_LABEL) as Role[]).map((r) => (
-                <DropdownMenuRadioItem key={r} value={r}>
-                  {ROLE_LABEL[r]}
-                </DropdownMenuRadioItem>
-              ))}
-            </DropdownMenuRadioGroup>
+            <DropdownMenuLabel className="flex flex-col">
+              <span>{user?.name || "Guest"}</span>
+              <span className="text-xs font-normal text-muted-foreground capitalize">{user?.role || "Resident"}</span>
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem 
               onClick={() => {
-                localStorage.removeItem("havenly.token");
-                localStorage.removeItem("havenly.user");
-                localStorage.removeItem("havenly.societyId");
+                logout();
                 window.location.href = "/select-society";
               }}
             >
@@ -105,11 +101,7 @@ export function Topbar() {
             </DropdownMenuItem>
             <DropdownMenuItem 
               className="text-destructive"
-              onClick={() => {
-                localStorage.removeItem("havenly.token");
-                localStorage.removeItem("havenly.user");
-                window.location.href = "/login";
-              }}
+              onClick={() => logout()}
             >
               Sign out
             </DropdownMenuItem>

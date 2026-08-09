@@ -4,13 +4,24 @@ import { Building2, ChevronsLeft, LogOut } from "lucide-react";
 import { NAV } from "@/lib/navigation";
 import { ROLE_LABEL, useApp } from "@/lib/app-context";
 import { useSociety } from "@/contexts/SocietyContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { cn } from "@/lib/utils";
+
+const getInitials = (name?: string) => {
+  if (!name) return "?";
+  const parts = name.split(" ").filter(Boolean);
+  if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  return name.slice(0, 2).toUpperCase();
+};
 
 export function SidebarContentInner({ onNavigate }: { onNavigate?: () => void }) {
   const { role, sidebarCollapsed, toggleSidebar } = useApp();
+  const { user, logout } = useAuth();
   const { selectedSociety } = useSociety();
   const collapsed = sidebarCollapsed && !onNavigate;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  const activeRole = user?.role || role || "resident";
 
   return (
     <div className="flex h-full flex-col bg-sidebar">
@@ -42,7 +53,7 @@ export function SidebarContentInner({ onNavigate }: { onNavigate?: () => void })
       </div>
 
       <nav className="scrollbar-slim flex-1 overflow-y-auto px-3 py-4">
-        {NAV[role].map((group) => (
+        {NAV[activeRole as keyof typeof NAV]?.map((group) => (
           <div key={group.label} className="mb-5">
             {!collapsed && (
               <p className="px-3 pb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
@@ -100,17 +111,22 @@ export function SidebarContentInner({ onNavigate }: { onNavigate?: () => void })
             collapsed && "justify-center p-2",
           )}
         >
-          <div className="grid size-9 shrink-0 place-items-center rounded-full bg-[image:var(--gradient-primary)] text-xs font-bold text-primary-foreground">
-            AR
-          </div>
+          {user?.avatar ? (
+            <img src={user.avatar} alt={user.name} className="size-9 shrink-0 rounded-full object-cover" />
+          ) : (
+            <div className="grid size-9 shrink-0 place-items-center rounded-full bg-[image:var(--gradient-primary)] text-xs font-bold text-primary-foreground">
+              {getInitials(user?.name)}
+            </div>
+          )}
           {!collapsed && (
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold text-foreground">Ananya Rao</p>
-              <p className="truncate text-xs text-muted-foreground">{ROLE_LABEL[role]}</p>
+              <p className="truncate text-sm font-semibold text-foreground">{user?.name || "Guest"}</p>
+              <p className="truncate text-xs text-muted-foreground">{user?.role ? ROLE_LABEL[user.role as any] || user.role : "Unknown Role"}</p>
             </div>
           )}
           {!collapsed && (
             <button
+              onClick={() => logout()}
               aria-label="Sign out"
               className="grid size-8 place-items-center rounded-lg text-muted-foreground transition-colors hover:bg-destructive/15 hover:text-destructive"
             >

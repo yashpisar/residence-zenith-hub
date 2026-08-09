@@ -36,10 +36,10 @@ function Login() {
       
       const mockUser: User = {
         id: `usr_${Math.random().toString(36).substr(2, 9)}`,
-        name: selectedRole === "resident" ? "Aarav Sharma" : selectedRole === "secretary" ? "Meera Desai" : "Vikram Singh",
+        name: selectedRole === "resident" ? "Ananya Rao" : selectedRole === "secretary" ? "Rahul Patil" : "Amit Sharma",
         email: `test@${selectedRole}.com`,
         role: selectedRole,
-        avatar: `https://ui-avatars.com/api/?name=${selectedRole}&background=random`,
+        avatar: undefined, // Explicitly no avatar for initials logic testing
         flatNumber: selectedRole === "resident" ? "A-402" : undefined,
         wing: selectedRole === "resident" ? "A" : undefined,
       };

@@ -81,29 +81,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Havenly Estates — Society Management Platform" },
+      { title: "Harmony Society Management" },
       {
         name: "description",
         content:
-          "Premium society management platform for residents, secretaries and security teams: complaints, maintenance, visitors and analytics.",
+          "A modern society management platform for residents, secretaries, and security guards.",
       },
-      { name: "author", content: "Havenly Estates" },
-      { property: "og:title", content: "Havenly Estates — Society Management Platform" },
+      { name: "author", content: "Harmony Society Management" },
+      { property: "og:title", content: "Harmony Society Management" },
       {
         property: "og:description",
         content:
-          "Complaints, maintenance, visitor management and analytics in one premium enterprise dashboard.",
+          "A modern society management platform for residents, secretaries, and security guards.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
