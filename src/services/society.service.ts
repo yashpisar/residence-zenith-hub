@@ -1,9 +1,10 @@
-import { Society, SocietyStatus } from "@/contexts/SocietyContext";
+import type { Society, SocietyStatus } from "@/contexts/SocietyContext";
+import { storage } from "@/lib/storage";
 
 const STORAGE_KEY = "societies";
 
 export const getSocieties = (): Society[] => {
-  const stored = localStorage.getItem(STORAGE_KEY);
+  const stored = storage.getItem(STORAGE_KEY);
   if (stored) {
     try {
       return JSON.parse(stored);
@@ -40,7 +41,7 @@ export const createSociety = (data: Omit<Society, "id" | "societyId" | "createdA
   };
 
   const updated = [...societies, newSociety];
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+  storage.setItem(STORAGE_KEY, JSON.stringify(updated));
   return newSociety;
 };
 
@@ -68,20 +69,20 @@ export const updateSocietyData = (id: string, data: Partial<Society>): Society =
   };
 
   societies[index] = updatedSociety;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(societies));
+  storage.setItem(STORAGE_KEY, JSON.stringify(societies));
   return updatedSociety;
 };
 
 export const deleteSocietyData = (id: string): void => {
   const societies = getSocieties();
   const filtered = societies.filter(s => s.id !== id);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
+  storage.setItem(STORAGE_KEY, JSON.stringify(filtered));
 };
 
 export const initDemoSocietiesIfEmpty = (demoSocieties: Society[]): Society[] => {
   const stored = getSocieties();
   if (stored.length === 0) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(demoSocieties));
+    storage.setItem(STORAGE_KEY, JSON.stringify(demoSocieties));
     return demoSocieties;
   }
   return stored;

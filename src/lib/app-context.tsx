@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { storage } from "./storage";
 
 export type Role = "resident" | "secretary" | "security" | "superadmin";
 export type ThemeMode = "dark" | "light" | "system";
@@ -36,9 +37,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   useEffect(() => {
-    const storedRole = localStorage.getItem(ROLE_KEY) as Role | null;
+    const storedRole = storage.getItem(ROLE_KEY) as Role | null;
     if (storedRole) setRoleState(storedRole);
-    const storedTheme = localStorage.getItem(THEME_KEY) as ThemeMode | null;
+    const storedTheme = storage.getItem(THEME_KEY) as ThemeMode | null;
     if (storedTheme) setThemeState(storedTheme);
   }, []);
 
@@ -52,12 +53,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const setRole = useCallback((next: Role) => {
     setRoleState(next);
-    localStorage.setItem(ROLE_KEY, next);
+    storage.setItem(ROLE_KEY, next);
   }, []);
 
   const setTheme = useCallback((next: ThemeMode) => {
     setThemeState(next);
-    localStorage.setItem(THEME_KEY, next);
+    storage.setItem(THEME_KEY, next);
   }, []);
 
   const value = useMemo(

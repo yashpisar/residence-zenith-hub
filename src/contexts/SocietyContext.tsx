@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { storage } from "@/lib/storage";
 import { 
   getSocieties, 
   getSocietyById as getSocietyByIdService, 
@@ -126,7 +127,7 @@ export function SocietyProvider({ children }: { children: ReactNode }) {
     const initialized = initDemoSocietiesIfEmpty(DEFAULT_SOCIETIES);
     setAvailableSocieties(initialized);
 
-    const storedSelected = localStorage.getItem("havenly.societyId");
+    const storedSelected = storage.getItem("havenly.societyId");
     if (storedSelected) {
       const found = initialized.find((s) => s.id === storedSelected);
       if (found) setSelectedSociety(found);
@@ -135,12 +136,12 @@ export function SocietyProvider({ children }: { children: ReactNode }) {
 
   const selectSociety = (society: Society) => {
     setSelectedSociety(society);
-    localStorage.setItem("havenly.societyId", society.id);
+    storage.setItem("havenly.societyId", society.id);
   };
 
   const clearSociety = () => {
     setSelectedSociety(null);
-    localStorage.removeItem("havenly.societyId");
+    storage.removeItem("havenly.societyId");
   };
 
   const switchSociety = () => {

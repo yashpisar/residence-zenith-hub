@@ -1,10 +1,13 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
+import { storage } from "@/lib/storage";
 
 export const Route = createFileRoute("/")({
   beforeLoad: () => {
-    const token = localStorage.getItem("havenly.token");
-    const userString = localStorage.getItem("havenly.user");
-    const societyId = localStorage.getItem("havenly.societyId");
+
+
+    const token = storage.getItem("havenly.token");
+    const userString = storage.getItem("havenly.user");
+    const societyId = storage.getItem("havenly.societyId");
     
     if (token && userString && societyId) {
       try {

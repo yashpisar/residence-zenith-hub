@@ -10,131 +10,51 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AnalyticsRouteImport } from './routes/analytics'
-import { Route as AnnouncementsRouteImport } from './routes/announcements'
-import { Route as DeliveriesRouteImport } from './routes/deliveries'
-import { Route as DocumentsRouteImport } from './routes/documents'
-import { Route as EmergencyRouteImport } from './routes/emergency'
-import { Route as ExpectedVisitorsRouteImport } from './routes/expected-visitors'
-import { Route as FlatsRouteImport } from './routes/flats'
-import { Route as GuardRouteImport } from './routes/guard'
-import { Route as MaintenanceRouteImport } from './routes/maintenance'
-import { Route as NoticesRouteImport } from './routes/notices'
-import { Route as PaymentsRouteImport } from './routes/payments'
-import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as PublicComplaintsRouteImport } from './routes/public-complaints'
-import { Route as QrScannerRouteImport } from './routes/qr-scanner'
-import { Route as ResidentRouteImport } from './routes/resident'
-import { Route as ResidentsRouteImport } from './routes/residents'
-import { Route as SecretaryRouteImport } from './routes/secretary'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as SelectSocietyRouteImport } from './routes/select-society'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as StaffRouteImport } from './routes/staff'
-import { Route as SuperadminRouteImport } from './routes/superadmin'
-import { Route as VisitorApprovalRouteImport } from './routes/visitor-approval'
-import { Route as VisitorReportsRouteImport } from './routes/visitor-reports'
 import { Route as authLoginRouteImport } from './routes/(auth)/login'
-import { Route as ComplaintsIndexRouteImport } from './routes/complaints.index'
-import { Route as ComplaintsNewRouteImport } from './routes/complaints.new'
-import { Route as GuardDashboardRouteImport } from './routes/guard/dashboard'
-import { Route as ResidentDashboardRouteImport } from './routes/resident/dashboard'
-import { Route as SecretaryDashboardRouteImport } from './routes/secretary/dashboard'
+import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated.analytics'
+import { Route as AuthenticatedAnnouncementsRouteImport } from './routes/_authenticated.announcements'
+import { Route as AuthenticatedDeliveriesRouteImport } from './routes/_authenticated.deliveries'
+import { Route as AuthenticatedDocumentsRouteImport } from './routes/_authenticated.documents'
+import { Route as AuthenticatedEmergencyRouteImport } from './routes/_authenticated.emergency'
+import { Route as AuthenticatedExpectedVisitorsRouteImport } from './routes/_authenticated.expected-visitors'
+import { Route as AuthenticatedFlatsRouteImport } from './routes/_authenticated.flats'
+import { Route as AuthenticatedGuardRouteImport } from './routes/_authenticated.guard'
+import { Route as AuthenticatedMaintenanceRouteImport } from './routes/_authenticated.maintenance'
+import { Route as AuthenticatedNoticesRouteImport } from './routes/_authenticated.notices'
+import { Route as AuthenticatedPaymentsRouteImport } from './routes/_authenticated.payments'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated.profile'
+import { Route as AuthenticatedPublicComplaintsRouteImport } from './routes/_authenticated.public-complaints'
+import { Route as AuthenticatedQrScannerRouteImport } from './routes/_authenticated.qr-scanner'
+import { Route as AuthenticatedResidentRouteImport } from './routes/_authenticated.resident'
+import { Route as AuthenticatedResidentsRouteImport } from './routes/_authenticated.residents'
+import { Route as AuthenticatedSecretaryRouteImport } from './routes/_authenticated.secretary'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated.settings'
+import { Route as AuthenticatedStaffRouteImport } from './routes/_authenticated.staff'
+import { Route as AuthenticatedSuperadminRouteImport } from './routes/_authenticated.superadmin'
+import { Route as AuthenticatedVisitorApprovalRouteImport } from './routes/_authenticated.visitor-approval'
+import { Route as AuthenticatedVisitorReportsRouteImport } from './routes/_authenticated.visitor-reports'
 import { Route as SocietiesSocietyIdRouteImport } from './routes/societies.$societyId'
 import { Route as SocietiesNewRouteImport } from './routes/societies.new'
-import { Route as SuperadminDashboardRouteImport } from './routes/superadmin/dashboard'
-import { Route as VisitorsHistoryRouteImport } from './routes/visitors.history'
-import { Route as VisitorsNewRouteImport } from './routes/visitors.new'
-import { Route as GuardVisitorsNewRouteImport } from './routes/guard/visitors/new'
+import { Route as AuthenticatedComplaintsIndexRouteImport } from './routes/_authenticated.complaints.index'
+import { Route as AuthenticatedComplaintsNewRouteImport } from './routes/_authenticated.complaints.new'
+import { Route as AuthenticatedGuardDashboardRouteImport } from './routes/_authenticated.guard.dashboard'
+import { Route as AuthenticatedResidentDashboardRouteImport } from './routes/_authenticated.resident.dashboard'
+import { Route as AuthenticatedSecretaryDashboardRouteImport } from './routes/_authenticated.secretary.dashboard'
+import { Route as AuthenticatedSuperadminDashboardRouteImport } from './routes/_authenticated.superadmin.dashboard'
+import { Route as AuthenticatedVisitorsHistoryRouteImport } from './routes/_authenticated.visitors.history'
+import { Route as AuthenticatedVisitorsNewRouteImport } from './routes/_authenticated.visitors.new'
 import { Route as SocietiesSocietyIdEditRouteImport } from './routes/societies.$societyId.edit'
+import { Route as AuthenticatedGuardVisitorsNewRouteImport } from './routes/_authenticated.guard.visitors.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AnalyticsRoute = AnalyticsRouteImport.update({
-  id: '/analytics',
-  path: '/analytics',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AnnouncementsRoute = AnnouncementsRouteImport.update({
-  id: '/announcements',
-  path: '/announcements',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DeliveriesRoute = DeliveriesRouteImport.update({
-  id: '/deliveries',
-  path: '/deliveries',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DocumentsRoute = DocumentsRouteImport.update({
-  id: '/documents',
-  path: '/documents',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EmergencyRoute = EmergencyRouteImport.update({
-  id: '/emergency',
-  path: '/emergency',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExpectedVisitorsRoute = ExpectedVisitorsRouteImport.update({
-  id: '/expected-visitors',
-  path: '/expected-visitors',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FlatsRoute = FlatsRouteImport.update({
-  id: '/flats',
-  path: '/flats',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GuardRoute = GuardRouteImport.update({
-  id: '/guard',
-  path: '/guard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MaintenanceRoute = MaintenanceRouteImport.update({
-  id: '/maintenance',
-  path: '/maintenance',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NoticesRoute = NoticesRouteImport.update({
-  id: '/notices',
-  path: '/notices',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PaymentsRoute = PaymentsRouteImport.update({
-  id: '/payments',
-  path: '/payments',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PublicComplaintsRoute = PublicComplaintsRouteImport.update({
-  id: '/public-complaints',
-  path: '/public-complaints',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const QrScannerRoute = QrScannerRouteImport.update({
-  id: '/qr-scanner',
-  path: '/qr-scanner',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResidentRoute = ResidentRouteImport.update({
-  id: '/resident',
-  path: '/resident',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResidentsRoute = ResidentsRouteImport.update({
-  id: '/residents',
-  path: '/residents',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SecretaryRoute = SecretaryRouteImport.update({
-  id: '/secretary',
-  path: '/secretary',
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SelectSocietyRoute = SelectSocietyRouteImport.update({
@@ -142,61 +62,127 @@ const SelectSocietyRoute = SelectSocietyRouteImport.update({
   path: '/select-society',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StaffRoute = StaffRouteImport.update({
-  id: '/staff',
-  path: '/staff',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SuperadminRoute = SuperadminRouteImport.update({
-  id: '/superadmin',
-  path: '/superadmin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VisitorApprovalRoute = VisitorApprovalRouteImport.update({
-  id: '/visitor-approval',
-  path: '/visitor-approval',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VisitorReportsRoute = VisitorReportsRouteImport.update({
-  id: '/visitor-reports',
-  path: '/visitor-reports',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const authLoginRoute = authLoginRouteImport.update({
   id: '/(auth)/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ComplaintsIndexRoute = ComplaintsIndexRouteImport.update({
-  id: '/complaints/',
-  path: '/complaints/',
-  getParentRoute: () => rootRouteImport,
+const AuthenticatedAnalyticsRoute = AuthenticatedAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const ComplaintsNewRoute = ComplaintsNewRouteImport.update({
-  id: '/complaints/new',
-  path: '/complaints/new',
-  getParentRoute: () => rootRouteImport,
+const AuthenticatedAnnouncementsRoute =
+  AuthenticatedAnnouncementsRouteImport.update({
+    id: '/announcements',
+    path: '/announcements',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedDeliveriesRoute = AuthenticatedDeliveriesRouteImport.update({
+  id: '/deliveries',
+  path: '/deliveries',
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const GuardDashboardRoute = GuardDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => GuardRoute,
+const AuthenticatedDocumentsRoute = AuthenticatedDocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const ResidentDashboardRoute = ResidentDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => ResidentRoute,
+const AuthenticatedEmergencyRoute = AuthenticatedEmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const SecretaryDashboardRoute = SecretaryDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => SecretaryRoute,
+const AuthenticatedExpectedVisitorsRoute =
+  AuthenticatedExpectedVisitorsRouteImport.update({
+    id: '/expected-visitors',
+    path: '/expected-visitors',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedFlatsRoute = AuthenticatedFlatsRouteImport.update({
+  id: '/flats',
+  path: '/flats',
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedGuardRoute = AuthenticatedGuardRouteImport.update({
+  id: '/guard',
+  path: '/guard',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedMaintenanceRoute =
+  AuthenticatedMaintenanceRouteImport.update({
+    id: '/maintenance',
+    path: '/maintenance',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedNoticesRoute = AuthenticatedNoticesRouteImport.update({
+  id: '/notices',
+  path: '/notices',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedPaymentsRoute = AuthenticatedPaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedPublicComplaintsRoute =
+  AuthenticatedPublicComplaintsRouteImport.update({
+    id: '/public-complaints',
+    path: '/public-complaints',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedQrScannerRoute = AuthenticatedQrScannerRouteImport.update({
+  id: '/qr-scanner',
+  path: '/qr-scanner',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedResidentRoute = AuthenticatedResidentRouteImport.update({
+  id: '/resident',
+  path: '/resident',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedResidentsRoute = AuthenticatedResidentsRouteImport.update({
+  id: '/residents',
+  path: '/residents',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedSecretaryRoute = AuthenticatedSecretaryRouteImport.update({
+  id: '/secretary',
+  path: '/secretary',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedStaffRoute = AuthenticatedStaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedSuperadminRoute = AuthenticatedSuperadminRouteImport.update({
+  id: '/superadmin',
+  path: '/superadmin',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedVisitorApprovalRoute =
+  AuthenticatedVisitorApprovalRouteImport.update({
+    id: '/visitor-approval',
+    path: '/visitor-approval',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedVisitorReportsRoute =
+  AuthenticatedVisitorReportsRouteImport.update({
+    id: '/visitor-reports',
+    path: '/visitor-reports',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const SocietiesSocietyIdRoute = SocietiesSocietyIdRouteImport.update({
   id: '/societies/$societyId',
   path: '/societies/$societyId',
@@ -207,154 +193,191 @@ const SocietiesNewRoute = SocietiesNewRouteImport.update({
   path: '/societies/new',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SuperadminDashboardRoute = SuperadminDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => SuperadminRoute,
-} as any)
-const VisitorsHistoryRoute = VisitorsHistoryRouteImport.update({
-  id: '/visitors/history',
-  path: '/visitors/history',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VisitorsNewRoute = VisitorsNewRouteImport.update({
-  id: '/visitors/new',
-  path: '/visitors/new',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GuardVisitorsNewRoute = GuardVisitorsNewRouteImport.update({
-  id: '/visitors/new',
-  path: '/visitors/new',
-  getParentRoute: () => GuardRoute,
-} as any)
+const AuthenticatedComplaintsIndexRoute =
+  AuthenticatedComplaintsIndexRouteImport.update({
+    id: '/complaints/',
+    path: '/complaints/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedComplaintsNewRoute =
+  AuthenticatedComplaintsNewRouteImport.update({
+    id: '/complaints/new',
+    path: '/complaints/new',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedGuardDashboardRoute =
+  AuthenticatedGuardDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedGuardRoute,
+  } as any)
+const AuthenticatedResidentDashboardRoute =
+  AuthenticatedResidentDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedResidentRoute,
+  } as any)
+const AuthenticatedSecretaryDashboardRoute =
+  AuthenticatedSecretaryDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedSecretaryRoute,
+  } as any)
+const AuthenticatedSuperadminDashboardRoute =
+  AuthenticatedSuperadminDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedSuperadminRoute,
+  } as any)
+const AuthenticatedVisitorsHistoryRoute =
+  AuthenticatedVisitorsHistoryRouteImport.update({
+    id: '/visitors/history',
+    path: '/visitors/history',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedVisitorsNewRoute =
+  AuthenticatedVisitorsNewRouteImport.update({
+    id: '/visitors/new',
+    path: '/visitors/new',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const SocietiesSocietyIdEditRoute = SocietiesSocietyIdEditRouteImport.update({
   id: '/edit',
   path: '/edit',
   getParentRoute: () => SocietiesSocietyIdRoute,
 } as any)
+const AuthenticatedGuardVisitorsNewRoute =
+  AuthenticatedGuardVisitorsNewRouteImport.update({
+    id: '/visitors/new',
+    path: '/visitors/new',
+    getParentRoute: () => AuthenticatedGuardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/analytics': typeof AnalyticsRoute
-  '/announcements': typeof AnnouncementsRoute
-  '/deliveries': typeof DeliveriesRoute
-  '/documents': typeof DocumentsRoute
-  '/emergency': typeof EmergencyRoute
-  '/expected-visitors': typeof ExpectedVisitorsRoute
-  '/flats': typeof FlatsRoute
-  '/guard': typeof GuardRouteWithChildren
-  '/maintenance': typeof MaintenanceRoute
-  '/notices': typeof NoticesRoute
-  '/payments': typeof PaymentsRoute
-  '/profile': typeof ProfileRoute
-  '/public-complaints': typeof PublicComplaintsRoute
-  '/qr-scanner': typeof QrScannerRoute
-  '/resident': typeof ResidentRouteWithChildren
-  '/residents': typeof ResidentsRoute
-  '/secretary': typeof SecretaryRouteWithChildren
   '/select-society': typeof SelectSocietyRoute
-  '/settings': typeof SettingsRoute
-  '/staff': typeof StaffRoute
-  '/superadmin': typeof SuperadminRouteWithChildren
-  '/visitor-approval': typeof VisitorApprovalRoute
-  '/visitor-reports': typeof VisitorReportsRoute
   '/login': typeof authLoginRoute
-  '/complaints/new': typeof ComplaintsNewRoute
-  '/guard/dashboard': typeof GuardDashboardRoute
-  '/resident/dashboard': typeof ResidentDashboardRoute
-  '/secretary/dashboard': typeof SecretaryDashboardRoute
+  '/analytics': typeof AuthenticatedAnalyticsRoute
+  '/announcements': typeof AuthenticatedAnnouncementsRoute
+  '/deliveries': typeof AuthenticatedDeliveriesRoute
+  '/documents': typeof AuthenticatedDocumentsRoute
+  '/emergency': typeof AuthenticatedEmergencyRoute
+  '/expected-visitors': typeof AuthenticatedExpectedVisitorsRoute
+  '/flats': typeof AuthenticatedFlatsRoute
+  '/guard': typeof AuthenticatedGuardRouteWithChildren
+  '/maintenance': typeof AuthenticatedMaintenanceRoute
+  '/notices': typeof AuthenticatedNoticesRoute
+  '/payments': typeof AuthenticatedPaymentsRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/public-complaints': typeof AuthenticatedPublicComplaintsRoute
+  '/qr-scanner': typeof AuthenticatedQrScannerRoute
+  '/resident': typeof AuthenticatedResidentRouteWithChildren
+  '/residents': typeof AuthenticatedResidentsRoute
+  '/secretary': typeof AuthenticatedSecretaryRouteWithChildren
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/staff': typeof AuthenticatedStaffRoute
+  '/superadmin': typeof AuthenticatedSuperadminRouteWithChildren
+  '/visitor-approval': typeof AuthenticatedVisitorApprovalRoute
+  '/visitor-reports': typeof AuthenticatedVisitorReportsRoute
   '/societies/$societyId': typeof SocietiesSocietyIdRouteWithChildren
   '/societies/new': typeof SocietiesNewRoute
-  '/superadmin/dashboard': typeof SuperadminDashboardRoute
-  '/visitors/history': typeof VisitorsHistoryRoute
-  '/visitors/new': typeof VisitorsNewRoute
-  '/complaints/': typeof ComplaintsIndexRoute
-  '/guard/visitors/new': typeof GuardVisitorsNewRoute
+  '/complaints/new': typeof AuthenticatedComplaintsNewRoute
+  '/guard/dashboard': typeof AuthenticatedGuardDashboardRoute
+  '/resident/dashboard': typeof AuthenticatedResidentDashboardRoute
+  '/secretary/dashboard': typeof AuthenticatedSecretaryDashboardRoute
+  '/superadmin/dashboard': typeof AuthenticatedSuperadminDashboardRoute
+  '/visitors/history': typeof AuthenticatedVisitorsHistoryRoute
+  '/visitors/new': typeof AuthenticatedVisitorsNewRoute
   '/societies/$societyId/edit': typeof SocietiesSocietyIdEditRoute
+  '/complaints/': typeof AuthenticatedComplaintsIndexRoute
+  '/guard/visitors/new': typeof AuthenticatedGuardVisitorsNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/analytics': typeof AnalyticsRoute
-  '/announcements': typeof AnnouncementsRoute
-  '/deliveries': typeof DeliveriesRoute
-  '/documents': typeof DocumentsRoute
-  '/emergency': typeof EmergencyRoute
-  '/expected-visitors': typeof ExpectedVisitorsRoute
-  '/flats': typeof FlatsRoute
-  '/guard': typeof GuardRouteWithChildren
-  '/maintenance': typeof MaintenanceRoute
-  '/notices': typeof NoticesRoute
-  '/payments': typeof PaymentsRoute
-  '/profile': typeof ProfileRoute
-  '/public-complaints': typeof PublicComplaintsRoute
-  '/qr-scanner': typeof QrScannerRoute
-  '/resident': typeof ResidentRouteWithChildren
-  '/residents': typeof ResidentsRoute
-  '/secretary': typeof SecretaryRouteWithChildren
   '/select-society': typeof SelectSocietyRoute
-  '/settings': typeof SettingsRoute
-  '/staff': typeof StaffRoute
-  '/superadmin': typeof SuperadminRouteWithChildren
-  '/visitor-approval': typeof VisitorApprovalRoute
-  '/visitor-reports': typeof VisitorReportsRoute
   '/login': typeof authLoginRoute
-  '/complaints/new': typeof ComplaintsNewRoute
-  '/guard/dashboard': typeof GuardDashboardRoute
-  '/resident/dashboard': typeof ResidentDashboardRoute
-  '/secretary/dashboard': typeof SecretaryDashboardRoute
+  '/analytics': typeof AuthenticatedAnalyticsRoute
+  '/announcements': typeof AuthenticatedAnnouncementsRoute
+  '/deliveries': typeof AuthenticatedDeliveriesRoute
+  '/documents': typeof AuthenticatedDocumentsRoute
+  '/emergency': typeof AuthenticatedEmergencyRoute
+  '/expected-visitors': typeof AuthenticatedExpectedVisitorsRoute
+  '/flats': typeof AuthenticatedFlatsRoute
+  '/guard': typeof AuthenticatedGuardRouteWithChildren
+  '/maintenance': typeof AuthenticatedMaintenanceRoute
+  '/notices': typeof AuthenticatedNoticesRoute
+  '/payments': typeof AuthenticatedPaymentsRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/public-complaints': typeof AuthenticatedPublicComplaintsRoute
+  '/qr-scanner': typeof AuthenticatedQrScannerRoute
+  '/resident': typeof AuthenticatedResidentRouteWithChildren
+  '/residents': typeof AuthenticatedResidentsRoute
+  '/secretary': typeof AuthenticatedSecretaryRouteWithChildren
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/staff': typeof AuthenticatedStaffRoute
+  '/superadmin': typeof AuthenticatedSuperadminRouteWithChildren
+  '/visitor-approval': typeof AuthenticatedVisitorApprovalRoute
+  '/visitor-reports': typeof AuthenticatedVisitorReportsRoute
   '/societies/$societyId': typeof SocietiesSocietyIdRouteWithChildren
   '/societies/new': typeof SocietiesNewRoute
-  '/superadmin/dashboard': typeof SuperadminDashboardRoute
-  '/visitors/history': typeof VisitorsHistoryRoute
-  '/visitors/new': typeof VisitorsNewRoute
-  '/complaints': typeof ComplaintsIndexRoute
-  '/guard/visitors/new': typeof GuardVisitorsNewRoute
+  '/complaints/new': typeof AuthenticatedComplaintsNewRoute
+  '/guard/dashboard': typeof AuthenticatedGuardDashboardRoute
+  '/resident/dashboard': typeof AuthenticatedResidentDashboardRoute
+  '/secretary/dashboard': typeof AuthenticatedSecretaryDashboardRoute
+  '/superadmin/dashboard': typeof AuthenticatedSuperadminDashboardRoute
+  '/visitors/history': typeof AuthenticatedVisitorsHistoryRoute
+  '/visitors/new': typeof AuthenticatedVisitorsNewRoute
   '/societies/$societyId/edit': typeof SocietiesSocietyIdEditRoute
+  '/complaints': typeof AuthenticatedComplaintsIndexRoute
+  '/guard/visitors/new': typeof AuthenticatedGuardVisitorsNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/analytics': typeof AnalyticsRoute
-  '/announcements': typeof AnnouncementsRoute
-  '/deliveries': typeof DeliveriesRoute
-  '/documents': typeof DocumentsRoute
-  '/emergency': typeof EmergencyRoute
-  '/expected-visitors': typeof ExpectedVisitorsRoute
-  '/flats': typeof FlatsRoute
-  '/guard': typeof GuardRouteWithChildren
-  '/maintenance': typeof MaintenanceRoute
-  '/notices': typeof NoticesRoute
-  '/payments': typeof PaymentsRoute
-  '/profile': typeof ProfileRoute
-  '/public-complaints': typeof PublicComplaintsRoute
-  '/qr-scanner': typeof QrScannerRoute
-  '/resident': typeof ResidentRouteWithChildren
-  '/residents': typeof ResidentsRoute
-  '/secretary': typeof SecretaryRouteWithChildren
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/select-society': typeof SelectSocietyRoute
-  '/settings': typeof SettingsRoute
-  '/staff': typeof StaffRoute
-  '/superadmin': typeof SuperadminRouteWithChildren
-  '/visitor-approval': typeof VisitorApprovalRoute
-  '/visitor-reports': typeof VisitorReportsRoute
   '/(auth)/login': typeof authLoginRoute
-  '/complaints/new': typeof ComplaintsNewRoute
-  '/guard/dashboard': typeof GuardDashboardRoute
-  '/resident/dashboard': typeof ResidentDashboardRoute
-  '/secretary/dashboard': typeof SecretaryDashboardRoute
+  '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
+  '/_authenticated/announcements': typeof AuthenticatedAnnouncementsRoute
+  '/_authenticated/deliveries': typeof AuthenticatedDeliveriesRoute
+  '/_authenticated/documents': typeof AuthenticatedDocumentsRoute
+  '/_authenticated/emergency': typeof AuthenticatedEmergencyRoute
+  '/_authenticated/expected-visitors': typeof AuthenticatedExpectedVisitorsRoute
+  '/_authenticated/flats': typeof AuthenticatedFlatsRoute
+  '/_authenticated/guard': typeof AuthenticatedGuardRouteWithChildren
+  '/_authenticated/maintenance': typeof AuthenticatedMaintenanceRoute
+  '/_authenticated/notices': typeof AuthenticatedNoticesRoute
+  '/_authenticated/payments': typeof AuthenticatedPaymentsRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/public-complaints': typeof AuthenticatedPublicComplaintsRoute
+  '/_authenticated/qr-scanner': typeof AuthenticatedQrScannerRoute
+  '/_authenticated/resident': typeof AuthenticatedResidentRouteWithChildren
+  '/_authenticated/residents': typeof AuthenticatedResidentsRoute
+  '/_authenticated/secretary': typeof AuthenticatedSecretaryRouteWithChildren
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/_authenticated/staff': typeof AuthenticatedStaffRoute
+  '/_authenticated/superadmin': typeof AuthenticatedSuperadminRouteWithChildren
+  '/_authenticated/visitor-approval': typeof AuthenticatedVisitorApprovalRoute
+  '/_authenticated/visitor-reports': typeof AuthenticatedVisitorReportsRoute
   '/societies/$societyId': typeof SocietiesSocietyIdRouteWithChildren
   '/societies/new': typeof SocietiesNewRoute
-  '/superadmin/dashboard': typeof SuperadminDashboardRoute
-  '/visitors/history': typeof VisitorsHistoryRoute
-  '/visitors/new': typeof VisitorsNewRoute
-  '/complaints/': typeof ComplaintsIndexRoute
-  '/guard/visitors/new': typeof GuardVisitorsNewRoute
+  '/_authenticated/complaints/new': typeof AuthenticatedComplaintsNewRoute
+  '/_authenticated/guard/dashboard': typeof AuthenticatedGuardDashboardRoute
+  '/_authenticated/resident/dashboard': typeof AuthenticatedResidentDashboardRoute
+  '/_authenticated/secretary/dashboard': typeof AuthenticatedSecretaryDashboardRoute
+  '/_authenticated/superadmin/dashboard': typeof AuthenticatedSuperadminDashboardRoute
+  '/_authenticated/visitors/history': typeof AuthenticatedVisitorsHistoryRoute
+  '/_authenticated/visitors/new': typeof AuthenticatedVisitorsNewRoute
   '/societies/$societyId/edit': typeof SocietiesSocietyIdEditRoute
+  '/_authenticated/complaints/': typeof AuthenticatedComplaintsIndexRoute
+  '/_authenticated/guard/visitors/new': typeof AuthenticatedGuardVisitorsNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/select-society'
+    | '/login'
     | '/analytics'
     | '/announcements'
     | '/deliveries'
@@ -372,28 +395,28 @@ export interface FileRouteTypes {
     | '/resident'
     | '/residents'
     | '/secretary'
-    | '/select-society'
     | '/settings'
     | '/staff'
     | '/superadmin'
     | '/visitor-approval'
     | '/visitor-reports'
-    | '/login'
+    | '/societies/$societyId'
+    | '/societies/new'
     | '/complaints/new'
     | '/guard/dashboard'
     | '/resident/dashboard'
     | '/secretary/dashboard'
-    | '/societies/$societyId'
-    | '/societies/new'
     | '/superadmin/dashboard'
     | '/visitors/history'
     | '/visitors/new'
+    | '/societies/$societyId/edit'
     | '/complaints/'
     | '/guard/visitors/new'
-    | '/societies/$societyId/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/select-society'
+    | '/login'
     | '/analytics'
     | '/announcements'
     | '/deliveries'
@@ -411,98 +434,72 @@ export interface FileRouteTypes {
     | '/resident'
     | '/residents'
     | '/secretary'
-    | '/select-society'
     | '/settings'
     | '/staff'
     | '/superadmin'
     | '/visitor-approval'
     | '/visitor-reports'
-    | '/login'
+    | '/societies/$societyId'
+    | '/societies/new'
     | '/complaints/new'
     | '/guard/dashboard'
     | '/resident/dashboard'
     | '/secretary/dashboard'
-    | '/societies/$societyId'
-    | '/societies/new'
     | '/superadmin/dashboard'
     | '/visitors/history'
     | '/visitors/new'
+    | '/societies/$societyId/edit'
     | '/complaints'
     | '/guard/visitors/new'
-    | '/societies/$societyId/edit'
   id:
     | '__root__'
     | '/'
-    | '/analytics'
-    | '/announcements'
-    | '/deliveries'
-    | '/documents'
-    | '/emergency'
-    | '/expected-visitors'
-    | '/flats'
-    | '/guard'
-    | '/maintenance'
-    | '/notices'
-    | '/payments'
-    | '/profile'
-    | '/public-complaints'
-    | '/qr-scanner'
-    | '/resident'
-    | '/residents'
-    | '/secretary'
+    | '/_authenticated'
     | '/select-society'
-    | '/settings'
-    | '/staff'
-    | '/superadmin'
-    | '/visitor-approval'
-    | '/visitor-reports'
     | '/(auth)/login'
-    | '/complaints/new'
-    | '/guard/dashboard'
-    | '/resident/dashboard'
-    | '/secretary/dashboard'
+    | '/_authenticated/analytics'
+    | '/_authenticated/announcements'
+    | '/_authenticated/deliveries'
+    | '/_authenticated/documents'
+    | '/_authenticated/emergency'
+    | '/_authenticated/expected-visitors'
+    | '/_authenticated/flats'
+    | '/_authenticated/guard'
+    | '/_authenticated/maintenance'
+    | '/_authenticated/notices'
+    | '/_authenticated/payments'
+    | '/_authenticated/profile'
+    | '/_authenticated/public-complaints'
+    | '/_authenticated/qr-scanner'
+    | '/_authenticated/resident'
+    | '/_authenticated/residents'
+    | '/_authenticated/secretary'
+    | '/_authenticated/settings'
+    | '/_authenticated/staff'
+    | '/_authenticated/superadmin'
+    | '/_authenticated/visitor-approval'
+    | '/_authenticated/visitor-reports'
     | '/societies/$societyId'
     | '/societies/new'
-    | '/superadmin/dashboard'
-    | '/visitors/history'
-    | '/visitors/new'
-    | '/complaints/'
-    | '/guard/visitors/new'
+    | '/_authenticated/complaints/new'
+    | '/_authenticated/guard/dashboard'
+    | '/_authenticated/resident/dashboard'
+    | '/_authenticated/secretary/dashboard'
+    | '/_authenticated/superadmin/dashboard'
+    | '/_authenticated/visitors/history'
+    | '/_authenticated/visitors/new'
     | '/societies/$societyId/edit'
+    | '/_authenticated/complaints/'
+    | '/_authenticated/guard/visitors/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AnalyticsRoute: typeof AnalyticsRoute
-  AnnouncementsRoute: typeof AnnouncementsRoute
-  DeliveriesRoute: typeof DeliveriesRoute
-  DocumentsRoute: typeof DocumentsRoute
-  EmergencyRoute: typeof EmergencyRoute
-  ExpectedVisitorsRoute: typeof ExpectedVisitorsRoute
-  FlatsRoute: typeof FlatsRoute
-  GuardRoute: typeof GuardRouteWithChildren
-  MaintenanceRoute: typeof MaintenanceRoute
-  NoticesRoute: typeof NoticesRoute
-  PaymentsRoute: typeof PaymentsRoute
-  ProfileRoute: typeof ProfileRoute
-  PublicComplaintsRoute: typeof PublicComplaintsRoute
-  QrScannerRoute: typeof QrScannerRoute
-  ResidentRoute: typeof ResidentRouteWithChildren
-  ResidentsRoute: typeof ResidentsRoute
-  SecretaryRoute: typeof SecretaryRouteWithChildren
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   SelectSocietyRoute: typeof SelectSocietyRoute
-  SettingsRoute: typeof SettingsRoute
-  StaffRoute: typeof StaffRoute
-  SuperadminRoute: typeof SuperadminRouteWithChildren
-  VisitorApprovalRoute: typeof VisitorApprovalRoute
-  VisitorReportsRoute: typeof VisitorReportsRoute
   authLoginRoute: typeof authLoginRoute
-  ComplaintsNewRoute: typeof ComplaintsNewRoute
   SocietiesSocietyIdRoute: typeof SocietiesSocietyIdRouteWithChildren
   SocietiesNewRoute: typeof SocietiesNewRoute
-  VisitorsHistoryRoute: typeof VisitorsHistoryRoute
-  VisitorsNewRoute: typeof VisitorsNewRoute
-  ComplaintsIndexRoute: typeof ComplaintsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -514,123 +511,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/analytics': {
-      id: '/analytics'
-      path: '/analytics'
-      fullPath: '/analytics'
-      preLoaderRoute: typeof AnalyticsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/announcements': {
-      id: '/announcements'
-      path: '/announcements'
-      fullPath: '/announcements'
-      preLoaderRoute: typeof AnnouncementsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/deliveries': {
-      id: '/deliveries'
-      path: '/deliveries'
-      fullPath: '/deliveries'
-      preLoaderRoute: typeof DeliveriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/documents': {
-      id: '/documents'
-      path: '/documents'
-      fullPath: '/documents'
-      preLoaderRoute: typeof DocumentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/emergency': {
-      id: '/emergency'
-      path: '/emergency'
-      fullPath: '/emergency'
-      preLoaderRoute: typeof EmergencyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/expected-visitors': {
-      id: '/expected-visitors'
-      path: '/expected-visitors'
-      fullPath: '/expected-visitors'
-      preLoaderRoute: typeof ExpectedVisitorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/flats': {
-      id: '/flats'
-      path: '/flats'
-      fullPath: '/flats'
-      preLoaderRoute: typeof FlatsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/guard': {
-      id: '/guard'
-      path: '/guard'
-      fullPath: '/guard'
-      preLoaderRoute: typeof GuardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/maintenance': {
-      id: '/maintenance'
-      path: '/maintenance'
-      fullPath: '/maintenance'
-      preLoaderRoute: typeof MaintenanceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notices': {
-      id: '/notices'
-      path: '/notices'
-      fullPath: '/notices'
-      preLoaderRoute: typeof NoticesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/payments': {
-      id: '/payments'
-      path: '/payments'
-      fullPath: '/payments'
-      preLoaderRoute: typeof PaymentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/public-complaints': {
-      id: '/public-complaints'
-      path: '/public-complaints'
-      fullPath: '/public-complaints'
-      preLoaderRoute: typeof PublicComplaintsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/qr-scanner': {
-      id: '/qr-scanner'
-      path: '/qr-scanner'
-      fullPath: '/qr-scanner'
-      preLoaderRoute: typeof QrScannerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/resident': {
-      id: '/resident'
-      path: '/resident'
-      fullPath: '/resident'
-      preLoaderRoute: typeof ResidentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/residents': {
-      id: '/residents'
-      path: '/residents'
-      fullPath: '/residents'
-      preLoaderRoute: typeof ResidentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/secretary': {
-      id: '/secretary'
-      path: '/secretary'
-      fullPath: '/secretary'
-      preLoaderRoute: typeof SecretaryRouteImport
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/select-society': {
@@ -640,41 +525,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SelectSocietyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/staff': {
-      id: '/staff'
-      path: '/staff'
-      fullPath: '/staff'
-      preLoaderRoute: typeof StaffRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/superadmin': {
-      id: '/superadmin'
-      path: '/superadmin'
-      fullPath: '/superadmin'
-      preLoaderRoute: typeof SuperadminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/visitor-approval': {
-      id: '/visitor-approval'
-      path: '/visitor-approval'
-      fullPath: '/visitor-approval'
-      preLoaderRoute: typeof VisitorApprovalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/visitor-reports': {
-      id: '/visitor-reports'
-      path: '/visitor-reports'
-      fullPath: '/visitor-reports'
-      preLoaderRoute: typeof VisitorReportsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/(auth)/login': {
       id: '/(auth)/login'
       path: '/login'
@@ -682,40 +532,159 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/complaints/': {
-      id: '/complaints/'
-      path: '/complaints'
-      fullPath: '/complaints/'
-      preLoaderRoute: typeof ComplaintsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_authenticated/analytics': {
+      id: '/_authenticated/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AuthenticatedAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/complaints/new': {
-      id: '/complaints/new'
-      path: '/complaints/new'
-      fullPath: '/complaints/new'
-      preLoaderRoute: typeof ComplaintsNewRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_authenticated/announcements': {
+      id: '/_authenticated/announcements'
+      path: '/announcements'
+      fullPath: '/announcements'
+      preLoaderRoute: typeof AuthenticatedAnnouncementsRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/guard/dashboard': {
-      id: '/guard/dashboard'
-      path: '/dashboard'
-      fullPath: '/guard/dashboard'
-      preLoaderRoute: typeof GuardDashboardRouteImport
-      parentRoute: typeof GuardRoute
+    '/_authenticated/deliveries': {
+      id: '/_authenticated/deliveries'
+      path: '/deliveries'
+      fullPath: '/deliveries'
+      preLoaderRoute: typeof AuthenticatedDeliveriesRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/resident/dashboard': {
-      id: '/resident/dashboard'
-      path: '/dashboard'
-      fullPath: '/resident/dashboard'
-      preLoaderRoute: typeof ResidentDashboardRouteImport
-      parentRoute: typeof ResidentRoute
+    '/_authenticated/documents': {
+      id: '/_authenticated/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof AuthenticatedDocumentsRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/secretary/dashboard': {
-      id: '/secretary/dashboard'
-      path: '/dashboard'
-      fullPath: '/secretary/dashboard'
-      preLoaderRoute: typeof SecretaryDashboardRouteImport
-      parentRoute: typeof SecretaryRoute
+    '/_authenticated/emergency': {
+      id: '/_authenticated/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof AuthenticatedEmergencyRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/expected-visitors': {
+      id: '/_authenticated/expected-visitors'
+      path: '/expected-visitors'
+      fullPath: '/expected-visitors'
+      preLoaderRoute: typeof AuthenticatedExpectedVisitorsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/flats': {
+      id: '/_authenticated/flats'
+      path: '/flats'
+      fullPath: '/flats'
+      preLoaderRoute: typeof AuthenticatedFlatsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/guard': {
+      id: '/_authenticated/guard'
+      path: '/guard'
+      fullPath: '/guard'
+      preLoaderRoute: typeof AuthenticatedGuardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/maintenance': {
+      id: '/_authenticated/maintenance'
+      path: '/maintenance'
+      fullPath: '/maintenance'
+      preLoaderRoute: typeof AuthenticatedMaintenanceRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/notices': {
+      id: '/_authenticated/notices'
+      path: '/notices'
+      fullPath: '/notices'
+      preLoaderRoute: typeof AuthenticatedNoticesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/payments': {
+      id: '/_authenticated/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof AuthenticatedPaymentsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/public-complaints': {
+      id: '/_authenticated/public-complaints'
+      path: '/public-complaints'
+      fullPath: '/public-complaints'
+      preLoaderRoute: typeof AuthenticatedPublicComplaintsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/qr-scanner': {
+      id: '/_authenticated/qr-scanner'
+      path: '/qr-scanner'
+      fullPath: '/qr-scanner'
+      preLoaderRoute: typeof AuthenticatedQrScannerRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/resident': {
+      id: '/_authenticated/resident'
+      path: '/resident'
+      fullPath: '/resident'
+      preLoaderRoute: typeof AuthenticatedResidentRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/residents': {
+      id: '/_authenticated/residents'
+      path: '/residents'
+      fullPath: '/residents'
+      preLoaderRoute: typeof AuthenticatedResidentsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/secretary': {
+      id: '/_authenticated/secretary'
+      path: '/secretary'
+      fullPath: '/secretary'
+      preLoaderRoute: typeof AuthenticatedSecretaryRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/staff': {
+      id: '/_authenticated/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof AuthenticatedStaffRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/superadmin': {
+      id: '/_authenticated/superadmin'
+      path: '/superadmin'
+      fullPath: '/superadmin'
+      preLoaderRoute: typeof AuthenticatedSuperadminRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/visitor-approval': {
+      id: '/_authenticated/visitor-approval'
+      path: '/visitor-approval'
+      fullPath: '/visitor-approval'
+      preLoaderRoute: typeof AuthenticatedVisitorApprovalRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/visitor-reports': {
+      id: '/_authenticated/visitor-reports'
+      path: '/visitor-reports'
+      fullPath: '/visitor-reports'
+      preLoaderRoute: typeof AuthenticatedVisitorReportsRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
     '/societies/$societyId': {
       id: '/societies/$societyId'
@@ -731,33 +700,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SocietiesNewRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/superadmin/dashboard': {
-      id: '/superadmin/dashboard'
+    '/_authenticated/complaints/': {
+      id: '/_authenticated/complaints/'
+      path: '/complaints'
+      fullPath: '/complaints/'
+      preLoaderRoute: typeof AuthenticatedComplaintsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/complaints/new': {
+      id: '/_authenticated/complaints/new'
+      path: '/complaints/new'
+      fullPath: '/complaints/new'
+      preLoaderRoute: typeof AuthenticatedComplaintsNewRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/guard/dashboard': {
+      id: '/_authenticated/guard/dashboard'
+      path: '/dashboard'
+      fullPath: '/guard/dashboard'
+      preLoaderRoute: typeof AuthenticatedGuardDashboardRouteImport
+      parentRoute: typeof AuthenticatedGuardRoute
+    }
+    '/_authenticated/resident/dashboard': {
+      id: '/_authenticated/resident/dashboard'
+      path: '/dashboard'
+      fullPath: '/resident/dashboard'
+      preLoaderRoute: typeof AuthenticatedResidentDashboardRouteImport
+      parentRoute: typeof AuthenticatedResidentRoute
+    }
+    '/_authenticated/secretary/dashboard': {
+      id: '/_authenticated/secretary/dashboard'
+      path: '/dashboard'
+      fullPath: '/secretary/dashboard'
+      preLoaderRoute: typeof AuthenticatedSecretaryDashboardRouteImport
+      parentRoute: typeof AuthenticatedSecretaryRoute
+    }
+    '/_authenticated/superadmin/dashboard': {
+      id: '/_authenticated/superadmin/dashboard'
       path: '/dashboard'
       fullPath: '/superadmin/dashboard'
-      preLoaderRoute: typeof SuperadminDashboardRouteImport
-      parentRoute: typeof SuperadminRoute
+      preLoaderRoute: typeof AuthenticatedSuperadminDashboardRouteImport
+      parentRoute: typeof AuthenticatedSuperadminRoute
     }
-    '/visitors/history': {
-      id: '/visitors/history'
+    '/_authenticated/visitors/history': {
+      id: '/_authenticated/visitors/history'
       path: '/visitors/history'
       fullPath: '/visitors/history'
-      preLoaderRoute: typeof VisitorsHistoryRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedVisitorsHistoryRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/visitors/new': {
-      id: '/visitors/new'
+    '/_authenticated/visitors/new': {
+      id: '/_authenticated/visitors/new'
       path: '/visitors/new'
       fullPath: '/visitors/new'
-      preLoaderRoute: typeof VisitorsNewRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/guard/visitors/new': {
-      id: '/guard/visitors/new'
-      path: '/visitors/new'
-      fullPath: '/guard/visitors/new'
-      preLoaderRoute: typeof GuardVisitorsNewRouteImport
-      parentRoute: typeof GuardRoute
+      preLoaderRoute: typeof AuthenticatedVisitorsNewRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
     '/societies/$societyId/edit': {
       id: '/societies/$societyId/edit'
@@ -766,55 +763,131 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SocietiesSocietyIdEditRouteImport
       parentRoute: typeof SocietiesSocietyIdRoute
     }
+    '/_authenticated/guard/visitors/new': {
+      id: '/_authenticated/guard/visitors/new'
+      path: '/visitors/new'
+      fullPath: '/guard/visitors/new'
+      preLoaderRoute: typeof AuthenticatedGuardVisitorsNewRouteImport
+      parentRoute: typeof AuthenticatedGuardRoute
+    }
   }
 }
 
-interface GuardRouteChildren {
-  GuardDashboardRoute: typeof GuardDashboardRoute
-  GuardVisitorsNewRoute: typeof GuardVisitorsNewRoute
+interface AuthenticatedGuardRouteChildren {
+  AuthenticatedGuardDashboardRoute: typeof AuthenticatedGuardDashboardRoute
+  AuthenticatedGuardVisitorsNewRoute: typeof AuthenticatedGuardVisitorsNewRoute
 }
 
-const GuardRouteChildren: GuardRouteChildren = {
-  GuardDashboardRoute: GuardDashboardRoute,
-  GuardVisitorsNewRoute: GuardVisitorsNewRoute,
+const AuthenticatedGuardRouteChildren: AuthenticatedGuardRouteChildren = {
+  AuthenticatedGuardDashboardRoute: AuthenticatedGuardDashboardRoute,
+  AuthenticatedGuardVisitorsNewRoute: AuthenticatedGuardVisitorsNewRoute,
 }
 
-const GuardRouteWithChildren = GuardRoute._addFileChildren(GuardRouteChildren)
+const AuthenticatedGuardRouteWithChildren =
+  AuthenticatedGuardRoute._addFileChildren(AuthenticatedGuardRouteChildren)
 
-interface ResidentRouteChildren {
-  ResidentDashboardRoute: typeof ResidentDashboardRoute
+interface AuthenticatedResidentRouteChildren {
+  AuthenticatedResidentDashboardRoute: typeof AuthenticatedResidentDashboardRoute
 }
 
-const ResidentRouteChildren: ResidentRouteChildren = {
-  ResidentDashboardRoute: ResidentDashboardRoute,
+const AuthenticatedResidentRouteChildren: AuthenticatedResidentRouteChildren = {
+  AuthenticatedResidentDashboardRoute: AuthenticatedResidentDashboardRoute,
 }
 
-const ResidentRouteWithChildren = ResidentRoute._addFileChildren(
-  ResidentRouteChildren,
-)
+const AuthenticatedResidentRouteWithChildren =
+  AuthenticatedResidentRoute._addFileChildren(
+    AuthenticatedResidentRouteChildren,
+  )
 
-interface SecretaryRouteChildren {
-  SecretaryDashboardRoute: typeof SecretaryDashboardRoute
+interface AuthenticatedSecretaryRouteChildren {
+  AuthenticatedSecretaryDashboardRoute: typeof AuthenticatedSecretaryDashboardRoute
 }
 
-const SecretaryRouteChildren: SecretaryRouteChildren = {
-  SecretaryDashboardRoute: SecretaryDashboardRoute,
+const AuthenticatedSecretaryRouteChildren: AuthenticatedSecretaryRouteChildren =
+  {
+    AuthenticatedSecretaryDashboardRoute: AuthenticatedSecretaryDashboardRoute,
+  }
+
+const AuthenticatedSecretaryRouteWithChildren =
+  AuthenticatedSecretaryRoute._addFileChildren(
+    AuthenticatedSecretaryRouteChildren,
+  )
+
+interface AuthenticatedSuperadminRouteChildren {
+  AuthenticatedSuperadminDashboardRoute: typeof AuthenticatedSuperadminDashboardRoute
 }
 
-const SecretaryRouteWithChildren = SecretaryRoute._addFileChildren(
-  SecretaryRouteChildren,
-)
+const AuthenticatedSuperadminRouteChildren: AuthenticatedSuperadminRouteChildren =
+  {
+    AuthenticatedSuperadminDashboardRoute:
+      AuthenticatedSuperadminDashboardRoute,
+  }
 
-interface SuperadminRouteChildren {
-  SuperadminDashboardRoute: typeof SuperadminDashboardRoute
+const AuthenticatedSuperadminRouteWithChildren =
+  AuthenticatedSuperadminRoute._addFileChildren(
+    AuthenticatedSuperadminRouteChildren,
+  )
+
+interface AuthenticatedRouteChildren {
+  AuthenticatedAnalyticsRoute: typeof AuthenticatedAnalyticsRoute
+  AuthenticatedAnnouncementsRoute: typeof AuthenticatedAnnouncementsRoute
+  AuthenticatedDeliveriesRoute: typeof AuthenticatedDeliveriesRoute
+  AuthenticatedDocumentsRoute: typeof AuthenticatedDocumentsRoute
+  AuthenticatedEmergencyRoute: typeof AuthenticatedEmergencyRoute
+  AuthenticatedExpectedVisitorsRoute: typeof AuthenticatedExpectedVisitorsRoute
+  AuthenticatedFlatsRoute: typeof AuthenticatedFlatsRoute
+  AuthenticatedGuardRoute: typeof AuthenticatedGuardRouteWithChildren
+  AuthenticatedMaintenanceRoute: typeof AuthenticatedMaintenanceRoute
+  AuthenticatedNoticesRoute: typeof AuthenticatedNoticesRoute
+  AuthenticatedPaymentsRoute: typeof AuthenticatedPaymentsRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedPublicComplaintsRoute: typeof AuthenticatedPublicComplaintsRoute
+  AuthenticatedQrScannerRoute: typeof AuthenticatedQrScannerRoute
+  AuthenticatedResidentRoute: typeof AuthenticatedResidentRouteWithChildren
+  AuthenticatedResidentsRoute: typeof AuthenticatedResidentsRoute
+  AuthenticatedSecretaryRoute: typeof AuthenticatedSecretaryRouteWithChildren
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
+  AuthenticatedStaffRoute: typeof AuthenticatedStaffRoute
+  AuthenticatedSuperadminRoute: typeof AuthenticatedSuperadminRouteWithChildren
+  AuthenticatedVisitorApprovalRoute: typeof AuthenticatedVisitorApprovalRoute
+  AuthenticatedVisitorReportsRoute: typeof AuthenticatedVisitorReportsRoute
+  AuthenticatedComplaintsNewRoute: typeof AuthenticatedComplaintsNewRoute
+  AuthenticatedVisitorsHistoryRoute: typeof AuthenticatedVisitorsHistoryRoute
+  AuthenticatedVisitorsNewRoute: typeof AuthenticatedVisitorsNewRoute
+  AuthenticatedComplaintsIndexRoute: typeof AuthenticatedComplaintsIndexRoute
 }
 
-const SuperadminRouteChildren: SuperadminRouteChildren = {
-  SuperadminDashboardRoute: SuperadminDashboardRoute,
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedAnalyticsRoute: AuthenticatedAnalyticsRoute,
+  AuthenticatedAnnouncementsRoute: AuthenticatedAnnouncementsRoute,
+  AuthenticatedDeliveriesRoute: AuthenticatedDeliveriesRoute,
+  AuthenticatedDocumentsRoute: AuthenticatedDocumentsRoute,
+  AuthenticatedEmergencyRoute: AuthenticatedEmergencyRoute,
+  AuthenticatedExpectedVisitorsRoute: AuthenticatedExpectedVisitorsRoute,
+  AuthenticatedFlatsRoute: AuthenticatedFlatsRoute,
+  AuthenticatedGuardRoute: AuthenticatedGuardRouteWithChildren,
+  AuthenticatedMaintenanceRoute: AuthenticatedMaintenanceRoute,
+  AuthenticatedNoticesRoute: AuthenticatedNoticesRoute,
+  AuthenticatedPaymentsRoute: AuthenticatedPaymentsRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedPublicComplaintsRoute: AuthenticatedPublicComplaintsRoute,
+  AuthenticatedQrScannerRoute: AuthenticatedQrScannerRoute,
+  AuthenticatedResidentRoute: AuthenticatedResidentRouteWithChildren,
+  AuthenticatedResidentsRoute: AuthenticatedResidentsRoute,
+  AuthenticatedSecretaryRoute: AuthenticatedSecretaryRouteWithChildren,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
+  AuthenticatedStaffRoute: AuthenticatedStaffRoute,
+  AuthenticatedSuperadminRoute: AuthenticatedSuperadminRouteWithChildren,
+  AuthenticatedVisitorApprovalRoute: AuthenticatedVisitorApprovalRoute,
+  AuthenticatedVisitorReportsRoute: AuthenticatedVisitorReportsRoute,
+  AuthenticatedComplaintsNewRoute: AuthenticatedComplaintsNewRoute,
+  AuthenticatedVisitorsHistoryRoute: AuthenticatedVisitorsHistoryRoute,
+  AuthenticatedVisitorsNewRoute: AuthenticatedVisitorsNewRoute,
+  AuthenticatedComplaintsIndexRoute: AuthenticatedComplaintsIndexRoute,
 }
 
-const SuperadminRouteWithChildren = SuperadminRoute._addFileChildren(
-  SuperadminRouteChildren,
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
 )
 
 interface SocietiesSocietyIdRouteChildren {
@@ -830,36 +903,11 @@ const SocietiesSocietyIdRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AnalyticsRoute: AnalyticsRoute,
-  AnnouncementsRoute: AnnouncementsRoute,
-  DeliveriesRoute: DeliveriesRoute,
-  DocumentsRoute: DocumentsRoute,
-  EmergencyRoute: EmergencyRoute,
-  ExpectedVisitorsRoute: ExpectedVisitorsRoute,
-  FlatsRoute: FlatsRoute,
-  GuardRoute: GuardRouteWithChildren,
-  MaintenanceRoute: MaintenanceRoute,
-  NoticesRoute: NoticesRoute,
-  PaymentsRoute: PaymentsRoute,
-  ProfileRoute: ProfileRoute,
-  PublicComplaintsRoute: PublicComplaintsRoute,
-  QrScannerRoute: QrScannerRoute,
-  ResidentRoute: ResidentRouteWithChildren,
-  ResidentsRoute: ResidentsRoute,
-  SecretaryRoute: SecretaryRouteWithChildren,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
   SelectSocietyRoute: SelectSocietyRoute,
-  SettingsRoute: SettingsRoute,
-  StaffRoute: StaffRoute,
-  SuperadminRoute: SuperadminRouteWithChildren,
-  VisitorApprovalRoute: VisitorApprovalRoute,
-  VisitorReportsRoute: VisitorReportsRoute,
   authLoginRoute: authLoginRoute,
-  ComplaintsNewRoute: ComplaintsNewRoute,
   SocietiesSocietyIdRoute: SocietiesSocietyIdRouteWithChildren,
   SocietiesNewRoute: SocietiesNewRoute,
-  VisitorsHistoryRoute: VisitorsHistoryRoute,
-  VisitorsNewRoute: VisitorsNewRoute,
-  ComplaintsIndexRoute: ComplaintsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

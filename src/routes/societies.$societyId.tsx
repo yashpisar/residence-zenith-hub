@@ -189,15 +189,15 @@ function SocietyDetailsPage() {
                 <h4 className="text-sm font-semibold text-muted-foreground mb-4 text-center">Weekly Visitor & Complaint Flow</h4>
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={chartData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
-                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
-                    <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" />
+                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--muted-foreground)' }} />
+                    <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--muted-foreground)' }} />
                     <RechartsTooltip 
-                      cursor={{ fill: 'hsl(var(--muted)/0.5)' }}
-                      contentStyle={{ backgroundColor: 'hsl(var(--card))', borderRadius: '8px', border: '1px solid hsl(var(--border))' }}
+                      cursor={{ fill: 'color-mix(in oklch, var(--muted) 50%, transparent)' }}
+                      contentStyle={{ backgroundColor: 'var(--card)', borderRadius: '8px', border: '1px solid var(--border)' }}
                     />
-                    <Bar dataKey="visitors" name="Visitors" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
-                    <Bar dataKey="complaints" name="Complaints" fill="hsl(var(--destructive))" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="visitors" name="Visitors" fill="var(--primary)" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="complaints" name="Complaints" fill="var(--destructive)" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>

@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
 import { useRouter } from "@tanstack/react-router";
 import { useSociety } from "./SocietyContext";
+import { storage } from "@/lib/storage";
 
 export type Role = "resident" | "secretary" | "security" | "superadmin";
 
@@ -16,6 +17,7 @@ export type User = {
 
 type AuthContextType = {
   isAuthenticated: boolean;
+  isAuthLoading: boolean;
   user: User | null;
   token: string | null;
   login: (token: string, user: User) => void;
@@ -36,12 +38,13 @@ const ROLE_PERMISSIONS: Record<Role, string[]> = {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
   const router = useRouter();
   const { clearSociety } = useSociety();
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("havenly.token");
-    const storedUser = localStorage.getItem("havenly.user");
+    const storedToken = storage.getItem("havenly.token");
+    const storedUser = storage.getItem("havenly.user");
     
     if (storedToken && storedUser) {
       try {
@@ -49,26 +52,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(JSON.parse(storedUser));
       } catch (e) {
         // Corrupted state, clear it out
-        logout();
+        storage.removeItem("havenly.token");
+        storage.removeItem("havenly.user");
       }
     }
+    setIsAuthLoading(false);
   }, []);
 
   const login = useCallback((newToken: string, newUser: User) => {
     setToken(newToken);
     setUser(newUser);
-    localStorage.setItem("havenly.token", newToken);
-    localStorage.setItem("havenly.user", JSON.stringify(newUser));
+    storage.setItem("havenly.token", newToken);
+    storage.setItem("havenly.user", JSON.stringify(newUser));
   }, []);
 
   const logout = useCallback(() => {
     setToken(null);
     setUser(null);
-    localStorage.removeItem("havenly.token");
-    localStorage.removeItem("havenly.user");
-    clearSociety();
+    storage.removeItem("havenly.token");
+    storage.removeItem("havenly.user");
+    // clearSociety(); // Optional based on requirements, but user requested keeping selected society on logout to switch users in same society
     router.navigate({ to: "/login" });
-  }, [router, clearSociety]);
+  }, [router]);
 
   const hasPermission = useCallback((permission: string) => {
     if (!user) return false;
@@ -80,6 +85,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     <AuthContext.Provider
       value={{
         isAuthenticated: !!token && !!user,
+        isAuthLoading,
         user,
         token,
         login,

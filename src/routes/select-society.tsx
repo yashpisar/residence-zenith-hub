@@ -73,35 +73,35 @@ function SelectSocietyPage() {
     <div className="min-h-screen bg-muted/30 pb-20">
       {/* Premium Header */}
       <div className="bg-background border-b border-border shadow-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
                 Welcome to Harmony
               </h1>
-              <p className="text-muted-foreground mt-1 text-lg">Select your society to continue</p>
+              <p className="text-muted-foreground mt-1 text-sm md:text-lg">Select your society to continue</p>
             </div>
 
-            <Button onClick={() => navigate({ to: '/societies/new' })} className="shadow-lg hover:shadow-xl transition-all">
+            <Button onClick={() => navigate({ to: '/societies/new' })} className="shadow-lg hover:shadow-xl transition-all w-full md:w-auto h-11 md:h-10">
               <Plus className="mr-2 size-4" /> Add New Society
             </Button>
           </div>
 
           {/* Filters Bar */}
-          <div className="mt-8 flex flex-col md:flex-row gap-4">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+          <div className="mt-4 md:mt-8 flex flex-col md:flex-row gap-3 md:gap-4">
+            <div className="relative flex-1 w-full">
+              <Search className="absolute left-3 top-3.5 md:top-3 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search society by name or address..."
-                className="pl-9 h-11 bg-muted/50 border-muted"
+                className="pl-9 h-11 bg-muted/50 border-muted w-full text-sm md:text-base"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
             
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-row gap-2 w-full md:w-auto overflow-hidden">
               <Select value={cityFilter} onValueChange={setCityFilter}>
-                <SelectTrigger className="w-[160px] h-11 bg-muted/50">
+                <SelectTrigger className="flex-1 min-w-0 h-11 md:w-[160px] md:flex-none bg-muted/50 text-xs md:text-sm px-2 md:px-3 [&>span]:truncate [&>span]:w-full [&>span]:text-left">
                   <SelectValue placeholder="City" />
                 </SelectTrigger>
                 <SelectContent>
@@ -110,7 +110,7 @@ function SelectSocietyPage() {
               </Select>
 
               <Select value={typeFilter} onValueChange={setTypeFilter}>
-                <SelectTrigger className="w-[160px] h-11 bg-muted/50">
+                <SelectTrigger className="flex-1 min-w-0 h-11 md:w-[160px] md:flex-none bg-muted/50 text-xs md:text-sm px-2 md:px-3 [&>span]:truncate [&>span]:w-full [&>span]:text-left">
                   <SelectValue placeholder="Type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -119,12 +119,12 @@ function SelectSocietyPage() {
               </Select>
 
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-[160px] h-11 bg-muted/50">
+                <SelectTrigger className="flex-1 min-w-0 h-11 md:w-[160px] md:flex-none bg-muted/50 text-xs md:text-sm px-2 md:px-3 [&>span]:truncate [&>span]:w-full [&>span]:text-left">
                   <SelectValue placeholder="Sort By" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="alphabetical">Alphabetical A-Z</SelectItem>
-                  <SelectItem value="flats">Largest (Flats)</SelectItem>
+                  <SelectItem value="alphabetical">A-Z</SelectItem>
+                  <SelectItem value="flats">Largest</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -133,10 +133,10 @@ function SelectSocietyPage() {
       </div>
 
       {/* Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 md:mt-12">
         <AnimatePresence>
           {filteredAndSortedSocieties.length > 0 ? (
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {filteredAndSortedSocieties.map((society, idx) => (
                 <motion.div
                   layout
@@ -146,43 +146,43 @@ function SelectSocietyPage() {
                   transition={{ delay: idx * 0.05 }}
                   key={society.id}
                   onClick={() => handleSelect(society)}
-                  className="group relative bg-card rounded-2xl border border-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer flex flex-col h-full hover:border-primary/50"
+                  className="group relative bg-card rounded-[20px] border border-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer flex flex-col h-full hover:border-primary/50 w-full max-w-none"
                 >
-                  <div className="h-40 w-full overflow-hidden relative">
+                  <div className="h-32 md:h-40 w-full overflow-hidden relative">
                     <img src={society.coverImage} alt={society.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    <div className={`absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-bold border flex items-center backdrop-blur-md ${getStatusColor(society.status)}`}>
+                    <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[10px] md:text-xs font-bold border flex items-center backdrop-blur-md ${getStatusColor(society.status)}`}>
                       <StatusIcon status={society.status} /> {society.status}
                     </div>
                   </div>
 
-                  <div className="relative px-6 pb-6 pt-12 flex-1 flex flex-col">
-                    <div className="absolute -top-10 left-6">
-                      <div className="size-20 rounded-xl bg-background p-1 shadow-lg border border-border">
+                  <div className="relative px-4 md:px-6 pb-5 md:pb-6 pt-10 md:pt-12 flex-1 flex flex-col">
+                    <div className="absolute -top-8 md:-top-10 left-4 md:left-6">
+                      <div className="size-16 md:size-20 rounded-xl bg-background p-1 shadow-lg border border-border">
                         <img src={society.logo} alt={society.name} className="size-full rounded-lg object-cover" />
                       </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors line-clamp-1">{society.name}</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors line-clamp-1">{society.name}</h3>
                     
-                    <div className="flex items-start gap-1.5 text-muted-foreground text-sm mb-4">
-                      <MapPin className="size-4 shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-1.5 text-muted-foreground text-xs md:text-sm mb-4">
+                      <MapPin className="size-3.5 md:size-4 shrink-0 mt-0.5" />
                       <p className="line-clamp-2">{society.address}, {society.city}</p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-sm mt-auto border-t border-border/50 pt-4">
-                      <div className="flex items-center gap-2">
-                        <Building2 className="size-4 text-primary" />
+                    <div className="grid grid-cols-2 gap-y-2 md:gap-y-3 gap-x-2 text-xs md:text-sm mt-auto border-t border-border/50 pt-3 md:pt-4">
+                      <div className="flex items-center gap-1.5 md:gap-2">
+                        <Building2 className="size-3.5 md:size-4 text-primary" />
                         <span className="font-medium">{society.totalFlats} Flats</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="size-4 text-blue-500" />
-                        <span className="font-medium">{society.totalResidents} Residents</span>
+                      <div className="flex items-center gap-1.5 md:gap-2">
+                        <Users className="size-3.5 md:size-4 text-blue-500" />
+                        <span className="font-medium">{society.totalResidents} Res.</span>
                       </div>
-                      <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                      <div className="text-[10px] md:text-xs text-muted-foreground font-medium uppercase tracking-wider">
                         {society.wings.length} Wings
                       </div>
-                      <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider text-right">
+                      <div className="text-[10px] md:text-xs text-muted-foreground font-medium uppercase tracking-wider text-right">
                         {society.type}
                       </div>
                     </div>
