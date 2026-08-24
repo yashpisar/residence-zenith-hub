@@ -1,6 +1,6 @@
 export function PageHeader({ icon: Icon, title, description, actions }) {
   return (
-    <header className="mb-7 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 sm:flex sm:items-center sm:justify-between">
+    <header className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex min-w-0 items-center gap-4">
         <div className="grid size-12 shrink-0 place-items-center rounded-2xl border border-border bg-[image:var(--gradient-surface)] shadow-[var(--shadow-card)]">
           <Icon className="size-6 text-primary" />
