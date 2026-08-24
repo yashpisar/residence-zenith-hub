@@ -186,7 +186,7 @@ function SelectSocietyPage() {
                   onClick={() => handleSelect(society)}
                   className="group relative bg-card rounded-[20px] border border-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer flex flex-col h-full hover:border-primary/50 w-full max-w-none"
                 >
-                  <div className="h-32 md:h-40 w-full overflow-hidden relative">
+                  <div className="aspect-[16/9] w-full overflow-hidden relative">
                     <img
                       src={society.coverImage}
                       alt={society.name}
@@ -202,11 +202,11 @@ function SelectSocietyPage() {
 
                   <div className="relative px-4 md:px-6 pb-5 md:pb-6 pt-10 md:pt-12 flex-1 flex flex-col">
                     <div className="absolute -top-8 md:-top-10 left-4 md:left-6">
-                      <div className="size-16 md:size-20 rounded-xl bg-background p-1 shadow-lg border border-border">
+                      <div className="size-16 md:size-20 lg:size-24 rounded-full bg-background p-1 shadow-lg border border-border">
                         <img
                           src={society.logo}
                           alt={society.name}
-                          className="size-full rounded-lg object-cover"
+                          className="size-full rounded-full object-cover"
                         />
                       </div>
                     </div>

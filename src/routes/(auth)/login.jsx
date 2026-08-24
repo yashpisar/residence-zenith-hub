@@ -71,7 +71,7 @@ function Login() {
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
         <div className="relative z-10 mt-auto p-12 text-foreground">
           <div className="flex items-center gap-4 mb-6">
-            <img src={selectedSociety.logo} alt="Logo" className="size-16 rounded-xl" />
+            <img src={selectedSociety.logo} alt="Logo" className="size-16 rounded-full object-cover" />
             <h1 className="text-4xl font-bold">{selectedSociety.name}</h1>
           </div>
           <p className="text-lg text-foreground/80 max-w-md">{selectedSociety.address}</p>
@@ -83,7 +83,7 @@ function Login() {
         <div className="mx-auto w-full max-w-sm lg:max-w-md">
           {/* Mobile Header (hidden on large screens) */}
           <div className="mb-10 flex flex-col items-center text-center lg:hidden">
-            <img src={selectedSociety.logo} alt="Logo" className="mb-4 size-20 rounded-2xl" />
+            <img src={selectedSociety.logo} alt="Logo" className="mb-4 size-20 rounded-full object-cover" />
             <h2 className="text-2xl font-bold">{selectedSociety.name}</h2>
           </div>
 

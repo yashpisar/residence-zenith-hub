@@ -15,6 +15,7 @@ import {
 import { SidebarContentInner } from "./Sidebar";
 import { useApp } from "@/lib/app-context";
 import { useAuth } from "@/contexts/AuthContext";
+import { useSociety } from "@/contexts/SocietyContext";
 import { toast } from "sonner";
 import { NotificationBell } from "@/components/notifications/NotificationBell";
 import { GlobalSearch } from "@/components/common/GlobalSearch";
@@ -24,6 +25,7 @@ const themeIcon = { dark: Moon, light: Sun, system: Laptop };
 export function Topbar() {
   const { role, setRole, theme, setTheme, sidebarCollapsed, toggleSidebar } = useApp();
   const { user, logout } = useAuth();
+  const { selectedSociety } = useSociety();
   const [mobileOpen, setMobileOpen] = useState(false);
   const ThemeIcon = themeIcon[theme];
 
@@ -31,7 +33,7 @@ export function Topbar() {
     <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-border bg-surface/85 px-4 backdrop-blur-xl md:px-6">
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open navigation">
+          <Button variant="ghost" size="icon" className="lg:hidden shrink-0" aria-label="Open navigation">
             <Menu />
           </Button>
         </SheetTrigger>
@@ -47,15 +49,24 @@ export function Topbar() {
           size="icon"
           onClick={toggleSidebar}
           aria-label="Expand sidebar"
-          className="hidden lg:inline-flex"
+          className="hidden lg:inline-flex shrink-0"
         >
           <PanelLeft />
         </Button>
       )}
 
-      <GlobalSearch />
+      {selectedSociety && (
+        <div className="flex items-center gap-2 max-w-[150px] sm:max-w-[200px] md:max-w-[300px] lg:hidden">
+          <img src={selectedSociety.logo} alt="Logo" className="size-6 rounded-full object-cover shrink-0 hidden sm:block" />
+          <span className="font-semibold text-sm truncate">{selectedSociety.name}</span>
+        </div>
+      )}
 
-      <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+      <div className="hidden lg:block flex-1 max-w-md">
+        <GlobalSearch />
+      </div>
+
+      <div className="ml-auto flex items-center gap-1.5 sm:gap-2 shrink-0">
         <Button
           size="sm"
           className="hidden sm:inline-flex"

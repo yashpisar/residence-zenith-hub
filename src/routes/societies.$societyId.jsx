@@ -96,7 +96,7 @@ function SocietyDetailsPage() {
   return (
     <div className="min-h-screen bg-muted/30 pb-20">
       {/* Banner & Header */}
-      <div className="relative h-64 md:h-80 w-full">
+      <div className="relative w-full aspect-[16/5] max-h-[320px] min-h-[200px]">
         <img src={society.coverImage} alt="Cover" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
@@ -114,8 +114,8 @@ function SocietyDetailsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 relative z-20">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-8">
           <div className="flex items-end gap-6">
-            <div className="size-32 md:size-40 rounded-2xl bg-background p-2 shadow-xl border border-border shrink-0">
-              <img src={society.logo} alt="Logo" className="size-full rounded-xl object-cover" />
+            <div className="size-20 md:size-28 lg:size-32 rounded-full bg-background p-2 shadow-xl border border-border shrink-0">
+              <img src={society.logo} alt="Logo" className="size-full rounded-full object-cover" />
             </div>
             <div className="pb-2">
               <div className="flex items-center gap-3 mb-2">

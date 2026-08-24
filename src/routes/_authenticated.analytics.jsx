@@ -48,7 +48,7 @@ function Analytics() {
         description="Operational performance across complaints, finance and gate security."
       />
 
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           label="Tickets closed"
           value={318}
