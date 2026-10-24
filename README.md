@@ -585,13 +585,123 @@ Pixel-perfect responsive layouts.
 The application should be production-ready, scalable, and easy to connect with a Node.js + Express.js backend using MongoDB and REST APIs.
 
 
-## Development
+## Monorepo Architecture & Folder Structure
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+The project is structured into two clean directories:
 
+```
+residence-zenith-hub/
+├── frontend/                     # React 19 + TanStack Router + Vite frontend
+│   ├── src/
+│   │   ├── components/           # Reusable UI, AppShell, Guard, Visitor dialogs
+│   │   ├── contexts/             # AuthContext, SocietyContext
+│   │   ├── routes/               # TanStack file-based routes
+│   │   └── services/             # Axios API client, socket.service
+│   ├── public/                   # Static assets & icons
+│   ├── package.json              # Frontend dependencies & scripts
+│   └── vite.config.js            # Vite configuration
+│
+├── backend/                      # Node.js + Express + Mongoose + Socket.io backend
+│   ├── src/
+│   │   ├── config/               # Database connection (Atlas + Memory fallback)
+│   │   ├── controllers/          # Auth, Complaint, Maintenance, Visitor, etc.
+│   │   ├── middleware/           # JWT auth, RBAC roles, rate-limiter, upload
+│   │   ├── models/               # Mongoose schemas & indexes
+│   │   ├── routes/               # Express REST route endpoints
+│   │   ├── scripts/              # Database seeder (seed.js)
+│   │   └── server.js             # Express application & HTTP server
+│   ├── tests/                    # Jest automated test suites
+│   ├── package.json              # Backend dependencies & scripts
+│   └── .env                      # Environment variables & MongoDB URI
+│
+├── scripts/
+│   └── dev.js                    # Cross-platform concurrent runner for both servers
+├── start-all.bat                 # Windows 1-click launcher for Frontend + Backend
+├── start-frontend.bat            # Windows 1-click launcher for Frontend only
+├── start-backend.bat             # Windows 1-click launcher for Backend only
+└── package.json                  # Root monorepo orchestrator
+```
+
+---
+
+## Quick Start & Running the Project
+
+### 1. Install Dependencies
+Run from the root directory:
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm run install:all
+```
+*(Or install inside `frontend/` and `backend/` independently using `npm install`)*
+
+### 2. Run Both Frontend and Backend Concurrently
+From the root directory:
+```sh
 npm run dev
 ```
+- **Frontend** runs on: `http://localhost:3000` (or next available port)
+- **Backend API** runs on: `http://localhost:5000`
+
+On Windows, you can also double-click:
+- **`start-all.bat`** — Starts both services in a single terminal.
+
+---
+
+### 3. Run Frontend or Backend Individually
+
+**Frontend Only:**
+```sh
+npm run dev:frontend
+# Or: cd frontend && npm run dev
+# Or double-click: start-frontend.bat
+```
+
+**Backend Only:**
+```sh
+npm run dev:backend
+# Or: cd backend && npm run dev
+# Or double-click: start-backend.bat
+```
+
+---
+
+## Database Configuration & Local Development
+
+The backend is configured with resilient dual-database support:
+
+1. **MongoDB Atlas (Production & Staging):**
+   - Configured via `MONGODB_URI` in `backend/.env`.
+   - *Note on Auth Failure (`code: 8000`):* If MongoDB Atlas rejects the connection due to invalid/expired password, check MongoDB Atlas Dashboard -> **Security** -> **Database Access** -> **Database Users** and update the password.
+2. **Automatic In-Memory Fallback (Local Development):**
+   - If MongoDB Atlas is unavailable or authentication fails, the backend automatically spins up an embedded in-memory MongoDB instance and auto-seeds all demo accounts.
+   - You can develop, login, and test immediately without any external database dependencies or hanging requests.
+
+### Demo Credentials
+
+| Role | Email | Password |
+|---|---|---|
+| **Secretary (Admin)** | `secretary@harmony.com` | `Admin@123` |
+| **Resident** | `resident@harmony.com` | `Resident@123` |
+| **Security Guard** | `guard@harmony.com` | `Guard@123` |
+
+---
+
+## Build and Testing
+
+**Compile Frontend for Production:**
+```sh
+npm run build
+# Or: npm run build:frontend
+```
+
+**Run Backend Test Suite:**
+```sh
+npm test
+# Or: npm run test:backend
+```
+
+**Re-seed Database:**
+```sh
+npm run seed
+# Or: npm run seed:backend
+```
+

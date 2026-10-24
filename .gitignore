@@ -22,7 +22,6 @@ dist-ssr
 
 # Editor directories and files
 .vscode/*
-!.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
@@ -30,3 +29,22 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Frontend
+frontend/node_modules
+frontend/dist
+frontend/.output
+frontend/.tanstack
+frontend/.wrangler
+frontend/.vinxi
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# Backend
+backend/node_modules
+backend/.env
+backend/.env.local
+backend/.env.*.local
+backend/uploads/*
+!backend/uploads/.gitkeep

@@ -1,0 +1,207 @@
+@import "tailwindcss";
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Premium Corporate design system.
+ * Dark is the default theme; `.light` on <html> flips the palette.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-amber: var(--amber);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 1.125rem;
+
+  --background: #080F1C;
+  --foreground: #E2E8F0;
+  --surface: #0D1625;
+  --card: #172334;
+  --card-foreground: #F8FAFC;
+  --popover: #1D2A3A;
+  --popover-foreground: #F8FAFC;
+
+  --primary: #14C8B8;
+  --primary-foreground: #080F1C;
+  --primary-hover: #0FB3A5;
+
+  --secondary: #1687E8;
+  --secondary-foreground: #F8FAFC;
+  --muted: #111C2D;
+  --muted-foreground: #94A3B8;
+  --accent: #1D2A3A;
+  --accent-foreground: #14C8B8;
+
+  --amber: #F59E0B;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --destructive: #EF4444;
+  --destructive-foreground: #F8FAFC;
+  --info: #1687E8;
+
+  --border: #2A3A50;
+  --input: #111C2D;
+  --ring: #14C8B8;
+
+  --chart-1: #14C8B8;
+  --chart-2: #1687E8;
+  --chart-3: #F59E0B;
+  --chart-4: #22C55E;
+  --chart-5: #EF4444;
+
+  --sidebar: #0B1422;
+  --sidebar-foreground: #CBD5E1;
+  --sidebar-primary: #14C8B8;
+  --sidebar-primary-foreground: #080F1C;
+  --sidebar-accent: #172334;
+  --sidebar-accent-foreground: #14C8B8;
+  --sidebar-border: #2A3A50;
+  --sidebar-ring: #14C8B8;
+
+  --gradient-primary: linear-gradient(135deg, #14C8B8, #1687E8);
+  --gradient-danger: linear-gradient(135deg, #EF4444, #B91C1C);
+  --gradient-success: linear-gradient(135deg, #22C55E, #15803D);
+  --gradient-surface: linear-gradient(160deg, #172334, #111C2D);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 28px -18px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.3), 0 26px 48px -22px rgba(0, 0, 0, 0.85);
+  --shadow-glow: 0 18px 40px -20px rgba(20, 200, 184, 0.55);
+}
+
+.light {
+  --background: oklch(0.968 0.006 250);
+  --foreground: oklch(0.24 0.03 259);
+  --surface: oklch(1 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.03 259);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.03 259);
+  --primary: oklch(0.635 0.113 183);
+  --primary-foreground: oklch(0.99 0.005 190);
+  --primary-hover: oklch(0.57 0.1 183);
+  --secondary: oklch(0.94 0.008 250);
+  --secondary-foreground: oklch(0.35 0.03 258);
+  --muted: oklch(0.945 0.008 250);
+  --muted-foreground: oklch(0.52 0.03 257);
+  --accent: oklch(0.93 0.012 250);
+  --accent-foreground: oklch(0.24 0.03 259);
+  --border: oklch(0.88 0.012 252);
+  --input: oklch(0.9 0.012 252);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.35 0.03 258);
+  --sidebar-accent: oklch(0.945 0.01 250);
+  --sidebar-accent-foreground: oklch(0.24 0.03 259);
+  --sidebar-border: oklch(0.9 0.012 252);
+  --gradient-surface: linear-gradient(160deg, oklch(1 0 0), oklch(0.975 0.006 250));
+  --shadow-card: 0 1px 2px oklch(0.4 0.03 258 / 0.08), 0 12px 24px -18px oklch(0.4 0.03 258 / 0.35);
+  --shadow-lift: 0 2px 6px oklch(0.4 0.03 258 / 0.1), 0 24px 44px -22px oklch(0.4 0.03 258 / 0.45);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 35%, transparent);
+  }
+}
+
+@utility surface-card {
+  background-image: var(--gradient-surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+@utility lift-on-hover {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+  }
+}
+
+@utility glass-panel {
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+  border-radius: 22px;
+  box-shadow: var(--shadow-lift);
+}
+
+@utility text-gradient-primary {
+  background: var(--gradient-primary);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility scrollbar-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+body { overflow-x: hidden; }
